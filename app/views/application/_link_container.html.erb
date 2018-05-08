@@ -1,0 +1,30 @@
+<div class="link-container">
+  <span class="indicator d-none d-lg-block <%= monitor_status_color_class( monitor )%>">
+    <i class="fa fa-fw fa-circle"></i>
+  </span>
+  <a href="<%= redirect_path(monitor.id) %>" target="_blank">
+    <div class="link-header">
+      <span class="text-info"><%= monitor.name %></span>
+      <a href="#" class='toggle-link-form-button'>
+        <i class="fa fa-pencil" data-toggle="tooltip" data-placement="bottom" title="Edit"></i>
+      </a>
+    </div>
+  </a>
+  <div class="link-form">
+    <hr>
+    <%= form_for monitor, html: { class: 'form-group' } do  |f| %>
+      <div class="form-group">
+        <%= f.text_field :name, class: 'form-control form-control-sm' %>
+      </div>
+      <div class="form-group">
+        <%= f.text_field :url, class: 'form-control form-control-sm' %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "Update", class: 'btn btn-sm btn-info form-control-sm' %>
+        <%= link_to "Delete", user_monitor_path(monitor), method: :delete, class: 'btn btn-sm btn-danger form-control-sm' %>
+      </div>
+      <% end %>
+  </div>
+  <!-- <i class="fa fa-trash text-danger"></i> -->
+  <!-- <small><%= link_to monitor.url, monitor.url %></small> -->
+</div>

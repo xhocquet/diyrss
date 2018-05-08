@@ -1,0 +1,11 @@
+{
+  "name": "diyrss",
+  "private": true,
+  "dependencies": {
+    "@rails/webpacker": "3.5",
+    "element-ui": "^2.3.7"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "2.11.2"
+  }
+}

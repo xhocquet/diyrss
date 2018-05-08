@@ -1,0 +1,25 @@
+<div class="categories-container">
+  <% if @user_categories.nil? %>
+    <div class="empty-state">
+      <h3 class="text-info">No Categories</h3>
+      <small>Add one below!</small>
+    </div>
+  <% else %>
+    <% @user_categories.each do |category| %>
+      <%= render 'category_card', category: category %>
+    <% end %>
+  <% end %>
+
+  <div class="new-category-wrapper">
+    <div class="new-category-container">
+      <%= form_for UserCategory.new(user: current_user), html: { class: 'form-group' } do  |f| %>
+          <div class="form-group">
+            <%= f.text_field :name, class: 'form-control form-control-sm', placeholder: 'Name' %>
+          </div>
+          <div class="form-group">
+            <%= f.submit 'Create Category', class: 'btn btn-sm btn-info form-control' %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>

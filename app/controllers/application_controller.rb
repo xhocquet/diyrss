@@ -1,0 +1,9 @@
+class ApplicationController < ActionController::Base
+  protect_from_forgery with: :exception
+
+  def index
+    @user_categories = current_user && current_user.user_categories.includes(user_monitors: :app_monitor)
+    @results = current_user && @user_categories.map(&:user_monitors).flatten.map(&:app_monitor).map(&:latest_report).flatten.compact
+    # @notifications = (current_user && Notification.where(recipient: current_user).includes(:relevant_thing).unread) || []
+  end
+end

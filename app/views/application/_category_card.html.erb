@@ -1,0 +1,40 @@
+<div class="category-container">
+  <div class="fa category-header">
+    <h3><%= category.name %></h3>
+    <%= button_to user_category_path(category), method: :delete, class: 'btn btn-sm btn-danger' do %>
+      <i class="fa fa-trash" data-toggle="tooltip" data-placement="bottom" title="Delete category and links"></i>
+      <% end %>
+  </div>
+
+  <hr>
+
+  <div class="links-container">
+    <% if category.user_monitors.empty? %>
+      <div class="empty-state">
+        <h3 class="text-info">No links</h3>
+        <small>Add one below!</small>
+      </div>
+    <% else %>
+      <% category.user_monitors.each do |monitor| %>
+        <%= render 'application/link_container', monitor: monitor %>
+      <% end %>
+    <% end %>
+
+    <hr>
+
+    <div class="new-link-monitor-container">
+      <%= form_for [category, UserMonitor.new], html: { class: 'form-group' } do  |f| %>
+        <div class="form-group">
+          <%= f.text_field :name, placeholder: "Name", class: 'form-control form-control-sm' %>
+        </div>
+        <div class="form-group">
+          <%= f.text_field :url, placeholder: "URL", class: 'form-control form-control-sm' %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "Create Link", class: 'btn btn-sm btn-info form-control form-control-sm' %>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>

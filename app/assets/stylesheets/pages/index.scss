@@ -1,0 +1,106 @@
+.categories-container {
+  display: flex;
+  flex-wrap: wrap;
+
+  .category-container {
+    border: 1px solid #ddd;
+    margin: 12px 1% 30px;
+    padding: 12px 16px;
+    width: 23%;
+
+    .category-header {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .links-container {
+      .empty-state {
+        -moz-box-shadow: none;
+        -webkit-box-shadow: none;
+        border: 0;
+        box-shadow: none;
+        margin: 0;
+        padding: 8px 0;
+        width: 100%;
+      }
+
+
+      .link-container {
+        border-radius: 4px;
+        border: 1px solid #aaa;
+        margin-bottom: 12px;
+        padding: 4px 8px;
+        position: relative;
+
+        .indicator {
+          font-size: 10px;
+          left: 6px;
+          pointer: default;
+          position: absolute;
+          top: 8px;
+        }
+
+        a:hover {
+          text-decoration: none !important;
+        }
+
+        .link-header {
+          display: flex;
+          justify-content: space-between;
+
+          a {
+            margin-left: 16px;
+          }
+
+          a:hover {
+            text-decoration: none !important;
+          }
+        }
+
+        .link-form {
+          display: none;
+
+          &.toggled {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+
+  .new-category-wrapper {
+    flex-basis: 100%;
+
+    .new-category-container {
+      margin: 30px auto;
+      -moz-border-radius: 4px;
+      -moz-box-shadow: 0 3px 4px -3px rgba(102, 102, 102, 0.25);
+      -webkit-border-radius: 4px;
+      -webkit-box-shadow: 0 3px 4px -3px rgba(102, 102, 102, 0.25);
+      border-radius: 4px;
+      border: 1px solid #ddd;
+      margin: 30px auto;
+      padding: 20px 40px;
+      text-align: center;
+      width: 40%;
+    }
+  }
+}
+
+.empty-state {
+  -moz-border-radius: 4px;
+  -moz-box-shadow: 0 3px 4px -3px rgba(102, 102, 102, 0.25);
+  -webkit-border-radius: 4px;
+  -webkit-box-shadow: 0 3px 4px -3px rgba(102, 102, 102, 0.25);
+  background-color: #fefefe;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  box-shadow: 0 3px 4px -3px rgba(102, 102, 102, 0.25);
+  color: #737373;
+  font-size: 100%;
+  margin: 30px auto;
+  padding: 40px 20px;
+  position: relative;
+  text-align: center;
+  width: 400px;
+}
