@@ -20,8 +20,7 @@ ENV BUNDLE_GEMFILE=Gemfile \
     BUNDLE_PATH=/bundle \
     REDIS_URL=redis://redis_db:6379 \
     RAILS_ENV=production \
-    RACK_ENV=production \
-    RAILS_SERVE_STATIC_FILES=true
+    RACK_ENV=production
 
 RUN bundle install
 
