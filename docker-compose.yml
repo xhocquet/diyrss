@@ -2,45 +2,55 @@ version: '3'
 services:
   app:
     build: .
-    entrypoint: ./docker_entry.sh
     command: bundle exec puma -C config/puma.rb
-    volumes:
-      - .:/diyrss_app
-    environment:
-      - DATABASE_HOST=db
-    ports:
-      - 3000:3000
-    expose:
-      - 3000
+    container_name: rails_app
     depends_on:
       - db
+    entrypoint: ./docker_entry.sh
+    environment:
+      - DATABASE_HOST=db
+    expose:
+      - 3000
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/diyrss_app
 
   db:
-    image: postgres
+    container_name: psql
     environment:
       - POSTGRES_USER=diyrss
       - POSTGRES_DB=diyrss_production
+    image: postgres
     ports:
       - 5432:5432
     volumes:
       - .:/db
 
   redis_db:
-    image: redis
     command: redis-server
+    container_name: redis
+    image: redis
     ports:
       - 6379:6379
     volumes:
       - .:/redis_db
 
   sidekiq:
+    container_name: sidekiq
     build: .
     command: bundle exec sidekiq -C config/sidekiq.yml
     depends_on:
       - db
       - redis_db
+    entrypoint: ./docker_entry.sh
+    environment:
+      - DATABASE_HOST=db
+    volumes:
+      - .:/diyrss_app
 
   web:
+    container_name: nginx
     build:
       context: .
       dockerfile: Dockerfile-nginx
