@@ -9,10 +9,12 @@ class AppMonitorWorker
 
     Wombat.crawl do
       response = Mechanize.new.get(app_monitor.url)
+      # TODO: Filter this down more. Content only?
+      contents = response.css app_monitor.selector
 
       new_result = MonitorResult.create!(
         app_monitor: app_monitor,
-        payload: response.body,
+        payload: contents.to_s,
       )
 
       # Trigger notifications from result

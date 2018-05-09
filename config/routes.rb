@@ -7,6 +7,17 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  namespace :admin do
+    resources :users
+    resources :app_monitors
+    resources :monitor_results
+    resources :notifications
+    resources :user_categories
+    resources :user_monitors
+
+    root to: "users#index"
+  end
+
   mount Sidekiq::Web => '/sidekiq'
 
   resources :user_categories do
