@@ -15,6 +15,11 @@ services:
       - 3000:3000
     volumes:
       - .:/diyrss_app
+    logging:
+      driver: syslog
+      options:
+        syslog-address: "udp://logs5.papertrailapp.com:49820"
+        tag: "{{.Name}}"
 
   db:
     container_name: psql
@@ -26,6 +31,11 @@ services:
       - 5432:5432
     volumes:
       - .:/db
+    logging:
+      driver: syslog
+      options:
+        syslog-address: "udp://logs5.papertrailapp.com:49820"
+        tag: "{{.Name}}"
 
   redis_db:
     command: redis-server
@@ -35,6 +45,11 @@ services:
       - 6379:6379
     volumes:
       - .:/redis_db
+    logging:
+      driver: syslog
+      options:
+        syslog-address: "udp://logs5.papertrailapp.com:49820"
+        tag: "{{.Name}}"
 
   sidekiq:
     container_name: sidekiq
@@ -48,6 +63,11 @@ services:
       - DATABASE_HOST=db
     volumes:
       - .:/diyrss_app
+    logging:
+      driver: syslog
+      options:
+        syslog-address: "udp://logs5.papertrailapp.com:49820"
+        tag: "{{.Name}}"
 
   web:
     container_name: nginx
@@ -58,3 +78,8 @@ services:
       - 'app'
     ports:
       - 80:80
+    logging:
+      driver: syslog
+      options:
+        syslog-address: "udp://logs5.papertrailapp.com:49820"
+        tag: "{{.Name}}"
