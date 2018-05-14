@@ -9,8 +9,7 @@ import "jquery-easing"
 import '../stylesheets/application'
 
 import Routes from 'javascripts/utils/routes'
-const inst = new Routes();
-
+window.RailsRouter = new Routes();
 
 document.addEventListener('DOMContentLoaded', () => {
   // Configure tooltips for collapsed side navigation
@@ -66,5 +65,8 @@ document.addEventListener('DOMContentLoaded', () => {
     e.preventDefault();
     $(e.target).parents('.link-container').find('.link-form').toggleClass('toggled');
   });
+
+  var endpoint = window.RailsRouter.get('api_v1_refresh_app_monitor_index')
+  console.log(endpoint)
 });
 

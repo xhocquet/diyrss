@@ -18,6 +18,12 @@ Rails.application.routes.draw do
     root to: "users#index"
   end
 
+  namespace :api do
+    namespace :v1 do
+      resources :refresh_app_monitor, only: :create
+    end
+  end
+
   mount Sidekiq::Web => '/sidekiq'
 
   resources :user_categories do

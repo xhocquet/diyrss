@@ -2,19 +2,25 @@ import RouteDump from './routes_dump'
 
 export default class {
   constructor() {
-    // console.log(RouteDump)
+    this.routeDump = RouteDump
   }
 
-  readTextFile(file) {
-    var fr = new FileReader();
-    fr.onload = function(e) {
-      showDataFile(e, o);
-    };
-    fr.readAsText(o.files[0]);
-  }
+  get(path) {
+    const routeMatcher = /^\s*([a-z0-9-_]*)\s+(GET|PATCH|PUT|POST|DELETE)\s+([a-z0-9.-_:\(\)\/]*)\s*([a-z0-9#-_\/]*)\s*$/
 
+    const line = this.routeDump.split("\n").find((line) => {
+      if (line === "") return false
 
-  say(msg) {
-    console.log(this.name + " says: " + msg);
+      const results = line.match(routeMatcher)
+
+      if (results === null) return false
+      const path_helper = results[1]
+      // const method = results[2]
+      const app_path = results[3]
+
+      return path === path_helper
+    })
+
+    return line
   }
 }
