@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
-    namespace :v1 do
+    scope :v1 do
       resources :refresh_app_monitor, only: :create
     end
   end

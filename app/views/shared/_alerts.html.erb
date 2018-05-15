@@ -1,13 +1,13 @@
-<% if notice %>
-  <div class="alert alert-success" role="alert">
+
+  <div class="alert alert-success" style="<%= 'display: block;' if notice %>" role="alert">
     <%= notice %>
   </div>
-<% end %>
-<% if alert %>
-  <div class="alert alert-danger" role="alert">
+
+
+  <div class="alert alert-danger" style="<%= 'display: block;' if alert %>" role="alert">
     <div>
       <%= alert %>
     </div>
     <small><%= flash[:error] %></small>
   </div>
-<% end %>
+

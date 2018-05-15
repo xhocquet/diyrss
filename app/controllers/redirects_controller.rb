@@ -2,7 +2,10 @@ class RedirectsController < ActionController::Base
   protect_from_forgery with: :exception
 
   def redirect
-    user_monitor.stale!
+    user_monitor.update!(
+      status: UserMonitor.statuses[:stale],
+      last_viewed: Time.zone.now,
+    )
     redirect_to user_monitor.url and return
   end
 
