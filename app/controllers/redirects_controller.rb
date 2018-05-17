@@ -1,6 +1,4 @@
-class RedirectsController < ActionController::Base
-  protect_from_forgery with: :exception
-
+class RedirectsController < BaseController
   def redirect
     user_monitor.update!(
       status: UserMonitor.statuses[:stale],

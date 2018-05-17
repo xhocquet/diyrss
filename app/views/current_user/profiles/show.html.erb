@@ -1,0 +1,24 @@
+<div class="card bg-light profile-card">
+  <div class="card-body">
+    <h5 class="card-title">My Settings:</h5>
+    <hr>
+    <%= form_for @profile, url: current_user_profile_path do |f| %>
+      <div class="form-check">
+        <%= f.check_box :notify_email, class: 'form-check-input' %>
+        <%= f.label 'Notify me via email', class: 'form-check-label' %>
+      </div>
+      <div class="form-check">
+        <%= f.check_box :notify_site, class: 'form-check-input' %>
+        <%= f.label 'Notify me via in-site notifications', class: 'form-check-label' %>
+      </div>
+      <hr>
+      <div class="form-group row">
+        <div class="col-md-7"></div>
+        <div class="col-md-4">
+          <%= f.submit 'Save', class: 'btn btn-success btn-sm btn-block' %>
+        </div>
+        <div class="col-md-1"></div>
+      </div>
+    <% end %>
+  </div>
+</div>

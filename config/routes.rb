@@ -7,6 +7,10 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  namespace :current_user do
+    resource :profile
+  end
+
   namespace :admin do
     resources :users
     resources :app_monitors

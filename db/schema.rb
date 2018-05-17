@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_15_042015) do
+ActiveRecord::Schema.define(version: 2018_05_17_010643) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,15 @@ ActiveRecord::Schema.define(version: 2018_05_15_042015) do
     t.index ["app_monitor_id"], name: "index_user_monitors_on_app_monitor_id"
     t.index ["user_category_id"], name: "index_user_monitors_on_user_category_id"
     t.index ["user_id"], name: "index_user_monitors_on_user_id"
+  end
+
+  create_table "user_profiles", force: :cascade do |t|
+    t.boolean "notify_email", default: true
+    t.boolean "notify_site", default: true
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_profiles_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

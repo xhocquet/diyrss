@@ -1,6 +1,4 @@
-class UserCategoriesController < ActionController::Base
-  protect_from_forgery with: :exception
-
+class UserCategoriesController < BaseController
   def create
     category = current_user.user_categories.create(create_params)
 

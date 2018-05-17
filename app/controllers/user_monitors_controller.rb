@@ -1,6 +1,4 @@
-class UserMonitorsController < ActionController::Base
-  protect_from_forgery with: :exception
-
+class UserMonitorsController < BaseController
   def create
     monitor = user_category.user_monitors.new(create_params)
 

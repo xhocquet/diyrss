@@ -5,4 +5,6 @@ class User < ApplicationRecord
   has_many :user_categories, inverse_of: :user
   has_many :user_monitors, inverse_of: :user
   has_many :app_monitors, through: :user_monitors
+
+  has_one :user_profile
 end

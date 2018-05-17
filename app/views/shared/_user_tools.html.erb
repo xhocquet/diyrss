@@ -1,4 +1,9 @@
 <% if user_signed_in? %>
+  <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Profile">
+  <%= link_to current_user_profile_path, class: "nav-link" do %>
+    <i class="fa fa-fw fa-user"></i>
+  <% end %>
+  </li>
   <li class="nav-item">
   <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
     <i class="fa fa-fw fa-sign-out"></i>Logout

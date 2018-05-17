@@ -1,5 +1,5 @@
 module Api
-  class RefreshAppMonitorController < ActionController::Base
+  class RefreshAppMonitorController < ::BaseController
     def create
       AppMonitorWorker.perform_async(user_monitor.app_monitor.id)
 
