@@ -1,5 +1,6 @@
 class AppMonitorWorker
   include Sidekiq::Worker
+
   attr_reader :response,
               :app_monitor_id
 
@@ -9,6 +10,7 @@ class AppMonitorWorker
 
     Wombat.crawl do
       response = Mechanize.new.get(app_monitor.url)
+
       # TODO: Filter this down more. Content only?
       contents = response.css app_monitor.selector
 
@@ -17,10 +19,13 @@ class AppMonitorWorker
         payload: contents.to_s,
       )
 
-      # Trigger notifications from result
-      NewMonitorResultWorker.perform_async(new_result.id)
+      app_monitor.update!(
+        latest_result: new_result,
+      )
 
-      # Schedule an update in one hour
+      NewMonitorResultWorker.perform_async(app_monitor.id)
+
+      # Schedule an 10 minutes unless we've already got jobs. No need for duplicates!
       AppMonitorWorker.perform_in(10.minutes, app_monitor_id) unless existing_scheduled?
     end
   rescue ArgumentError => e

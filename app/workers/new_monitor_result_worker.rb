@@ -1,33 +1,27 @@
 class NewMonitorResultWorker
   include Sidekiq::Worker
 
-  attr_reader :new_result,
-              :prev_result
+  attr_reader :app_monitor,
+              :latest_result
 
-  def perform(new_result_id)
-    @new_result = MonitorResult.find(new_result_id)
-    @prev_result = MonitorResult.where(app_monitor: current_app_monitor).order(:created_at).last(2).first
+  def perform(app_monitor_id)
+    @app_monitor = AppMonitor.find(app_monitor_id)
+    @latest_result = app_monitor.latest_result
 
-    # Different if first
-    return new_result.different! if first_result?
+    app_monitor.user_monitors.find_each do |user_monitor|
+      next if user_monitor.last_viewed_result_id == latest_result.id
 
-    return if new_result.payload == prev_result.payload
+      # Do not notify if already notified
+      next if user_monitor.user.notifications.unread.where(relevant_thing: user_monitor).present?
 
-    UserMonitor.where(app_monitor: current_app_monitor).includes(:user).find_each do |user_monitor|
-      user_monitor.fresh!
-      # Notification.create!(
-      #   recipient: user_monitor.user,
-      #   action: 0,
-      #   relevant_thing: @new_result,
-      # )
+      # Do not notify if contents are the same
+      next if user_monitor.last_viewed_result.payload == app_monitor.latest_result.payload
+
+      Notification.create!(
+        recipient: user_monitor.user,
+        action: Notification.actions[:monitor_update],
+        relevant_thing: user_monitor,
+      )
     end
-  end
-
-  def current_app_monitor
-    @current_app_monitor ||= new_result.app_monitor
-  end
-
-  def first_result?
-    prev_result.id == new_result.id
   end
 end

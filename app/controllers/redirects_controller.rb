@@ -3,6 +3,7 @@ class RedirectsController < BaseController
     user_monitor.update!(
       status: UserMonitor.statuses[:stale],
       last_viewed: Time.zone.now,
+      last_viewed_result: user_monitor.app_monitor.latest_result,
     )
     redirect_to user_monitor.url and return
   end
