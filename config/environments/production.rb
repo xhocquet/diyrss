@@ -78,12 +78,7 @@ Rails.application.configure do
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
-  # Use default logging formatter so that PID and timestamp are not suppressed.
-  config.log_formatter = ::Logger::Formatter.new
-
-  logger           = ActiveSupport::Logger.new(STDOUT)
-  logger.formatter = config.log_formatter
-  config.logger    = ActiveSupport::TaggedLogging.new(logger)
+  # Use default logging formatter so that PID and timestamp are not suppresse
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
