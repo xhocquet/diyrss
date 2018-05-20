@@ -5,6 +5,11 @@ class RedirectsController < BaseController
       last_viewed: Time.zone.now,
       last_viewed_result: user_monitor.app_monitor.latest_result,
     )
+
+    current_user.notifications.unread.where(relevant_thing: user_monitor).update_all(
+      read_at: Time.zone.now,
+    )
+
     redirect_to user_monitor.url and return
   end
 

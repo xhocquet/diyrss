@@ -1,6 +1,6 @@
 <% if @notifications %>
   <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <i class="fa fa-fw fa-bell"></i>
+      <i class="fa fa-fw fa-envelope-open"></i>
       <% if @notifications.present? %>
         <span class="d-lg-none">Alerts
           <span class="badge badge-pill badge-warning"><%= @notifications.size %> New</span>
@@ -11,17 +11,15 @@
       <% end %>
     </a>
   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
-    <h6 class="dropdown-header">New Alerts:</h6>
-    <div class="dropdown-divider"></div>
 
     <% @notifications.each do |notif| %>
-      <a class="dropdown-item" href="#">
-          <span class="text-success">
+      <a class="dropdown-item" href="<%= notification_path(notif) %>" target="_blank">
+          <span class="text-info">
             <strong>
-              <i class="fa fa-long-arrow-up fa-fw"></i>New Update!</strong>
+              <i class="fa fa-newspaper-o"></i> Fresh Content!</strong>
           </span>
-          <span class="small float-right text-muted"><%= distance_of_time_in_words(notif.relevant_thing.created_at, Time.now.utc) %></span>
-          <div class="dropdown-message small">You've got a new update! Visit your dashboard.</div>
+          <span class="small float-right text-muted"><%= distance_of_time_in_words(notif.created_at, Time.now.utc) %></span>
+          <div class="dropdown-message small"><%= notification_description(notif.relevant_thing) %></div>
         </a>
       <div class="dropdown-divider"></div>
     <% end %>

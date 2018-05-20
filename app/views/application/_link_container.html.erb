@@ -1,5 +1,5 @@
 <div class="link-container">
-  <span class="indicator d-none d-lg-block <%= monitor_status_color_class( monitor )%>">
+  <span class="indicator d-none d-lg-block <%= monitor_status_color_class( @notifications.find_by(relevant_thing: monitor) )%>">
     <i class="fa fa-fw fa-circle" data-toggle="tooltip" data-placement="bottom" title="<%= monitor.last_viewed.try(:strftime, "%m-%e-%y %H:%M") %>"></i>
   </span>
   <a href="<%= redirect_path(monitor.id) %>" target="_blank">
