@@ -5,7 +5,7 @@ class AppMonitor < ApplicationRecord
   has_many :user_monitors, inverse_of: :app_monitor
   has_many :users, through: :user_monitors
 
-  belongs_to :latest_result, class_name: "MonitorResult"
+  belongs_to :latest_result, class_name: "MonitorResult", required: false
 
   enum status: [
     :fresh,
