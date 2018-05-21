@@ -14,7 +14,7 @@ class NewMonitorResultWorker
 
       # Do not notify if already notified
       next if notification_already_exists?
-      next if first_result?
+
       # Do not notify if contents are the same
       next if contents_the_same?
 
@@ -34,10 +34,6 @@ class NewMonitorResultWorker
 
   def notification_already_exists?
     user_monitor.user.notifications.unread.where(relevant_thing: user_monitor).present?
-  end
-
-  def first_result?
-    latest_result.nil? || user_monitor.last_viewed_result.nil?
   end
 
   def contents_the_same?
