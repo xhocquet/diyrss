@@ -12,7 +12,11 @@ class AppMonitorWorker
       response = Mechanize.new.get(app_monitor.url)
 
       # TODO: Filter this down more. Content only?
-      contents = response.css app_monitor.selector
+      contents = if app_monitor.selector.present?
+                   response.css app_monitor.selector
+                 else
+                   response.to_s
+                 end
 
       new_result = MonitorResult.create!(
         app_monitor: app_monitor,
