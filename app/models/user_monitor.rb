@@ -1,5 +1,5 @@
 class UserMonitor < ApplicationRecord
-  after_destroy :destroy_app_monitor_if_last
+  after_commit :destroy_app_monitor_if_last, on: :destroy
 
   belongs_to :app_monitor, inverse_of: :user_monitors
   belongs_to :user, inverse_of: :user_monitors
