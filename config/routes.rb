@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
     resources :app_monitors
-    resources :monitor_results
+    resources :monitor_results do
+      get :diff
+    end
     resources :notifications
     resources :user_categories
     resources :user_monitors

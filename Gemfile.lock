@@ -85,6 +85,7 @@ GEM
       railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
+    diffy (3.2.1)
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
     erubi (1.7.1)
@@ -281,6 +282,7 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   devise
+  diffy
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)

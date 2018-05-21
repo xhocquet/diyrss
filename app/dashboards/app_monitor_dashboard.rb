@@ -56,7 +56,7 @@ class AppMonitorDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how app monitors are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(app_monitor)
-  #   "AppMonitor ##{app_monitor.id}"
-  # end
+  def display_resource(app_monitor)
+    "#{app_monitor.url}"
+  end
 end

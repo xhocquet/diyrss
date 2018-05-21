@@ -3,12 +3,13 @@ module Admin
     # To customize the behavior of this controller,
     # you can overwrite any of the RESTful actions. For example:
     #
-    # def index
-    #   super
-    #   @resources = MonitorResult.
-    #     page(params[:page]).
-    #     per(10)
-    # end
+    def scoped_resource
+      resource_class.order(created_at: :desc)
+    end
+
+    def diff
+      @diff = scoped_resource.find(params.require(:monitor_result_id)).difference_from_last_in_html
+    end
 
     # Define a custom finder by overriding the `find_resource` method:
     # def find_resource(param)
