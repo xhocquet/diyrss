@@ -200,6 +200,8 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    rollbar (2.16.0)
+      multi_json
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
     sass (3.5.6)
@@ -286,6 +288,7 @@ DEPENDENCIES
   pg
   puma (~> 3.7)
   rails (~> 5.2.0)
+  rollbar
   sass-rails (~> 5.0)
   selenium-webdriver
   sidekiq
