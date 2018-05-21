@@ -13,14 +13,15 @@ class AppMonitorWorker
 
       # TODO: Filter this down more. Content only?
       payload = if app_monitor.selector.present?
-                   response.css(app_monitor.selector).to_s
-                 else
-                   response.to_s
-                 end
+                  response.css(app_monitor.selector).inspect
+                else
+                  response.inspect
+                end
 
       new_result = MonitorResult.create!(
         app_monitor: app_monitor,
         payload: payload,
+        status: MonitorResult.statuses[:ok],
       )
 
       app_monitor.update!(
