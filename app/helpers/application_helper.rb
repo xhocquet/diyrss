@@ -9,7 +9,7 @@ module ApplicationHelper
 
   def notification_description(thing)
     if thing.is_a? UserMonitor
-      "We've detected new content for #{thing.name}"
+      "We've found new content for #{thing.name}!"
     end
   end
 

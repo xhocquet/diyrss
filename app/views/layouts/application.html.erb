@@ -14,7 +14,7 @@
     <%= csrf_meta_tags %>
   </head>
 
-  <body class="fixed-nav sticky-footer bg-dark <%= controller.controller_path %> <%= controller.action_name %>" id="page-top">
+  <body class="fixed-nav sticky-footer bg-dark <%= controller.controller_path.gsub("/","_") %> <%= controller.action_name %>" id="page-top">
 
     <%= render 'shared/alerts' %>
     <%= render 'shared/navigation' %>

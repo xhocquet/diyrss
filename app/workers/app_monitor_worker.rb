@@ -8,6 +8,11 @@ class AppMonitorWorker
     @app_monitor_id = app_monitor_id
     app_monitor = AppMonitor.find(app_monitor_id)
 
+    if app_monitor.updated_at < Time.now.utc - 10.minutes
+      AppMonitorWorker.perform_in(10.minutes, app_monitor_id)
+      return
+    end
+
     Wombat.crawl do
       response = Mechanize.new.get(app_monitor.url)
 
@@ -30,20 +35,17 @@ class AppMonitorWorker
 
       NewMonitorResultWorker.perform_async(app_monitor.id)
 
-      # Schedule an 10 minutes unless we've already got jobs. No need for duplicates!
-      AppMonitorWorker.perform_in(10.minutes, app_monitor_id) unless existing_scheduled?
+      AppMonitorWorker.perform_in(10.minutes, app_monitor_id)
     end
   rescue StandardError => e
     if e.message =~ /absolute URL needed/
       app_monitor.error!
     else
-      Rollbar.error(e)
+      if Rails.env.development?
+        raise e
+      else
+        Rollbar.error(e)
+      end
     end
-  end
-
-  def existing_scheduled
-    ss = Sidekiq::ScheduledSet.new
-    jobs = ss.select {|job| job.klass == 'AppMonitorWorker' }.select {|job| jobs.first.args.first == app_monitor_id }
-    jobs.size > 0
   end
 end

@@ -16,7 +16,6 @@
     </div>
   </a>
   <div class="link-form">
-    <hr>
     <%= form_for monitor, html: { class: 'form-group' } do  |f| %>
       <div class="form-group">
         <%= f.text_field :name, class: 'form-control form-control-sm' %>
@@ -24,7 +23,7 @@
       <div class="form-group">
         <%= f.text_field :url, class: 'form-control form-control-sm' %>
       </div>
-      <div class="form-group">
+      <div>
         <%= f.submit "Update", class: 'btn btn-sm btn-info form-control-sm' %>
         <%= link_to "Delete", user_monitor_path(monitor), method: :delete, class: 'btn btn-sm btn-danger form-control-sm' %>
       </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_21_013933) do
+ActiveRecord::Schema.define(version: 2018_05_21_032242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2018_05_21_013933) do
     t.datetime "updated_at", null: false
     t.text "selector"
     t.integer "latest_result_id"
+    t.index ["latest_result_id"], name: "index_app_monitors_on_latest_result_id"
     t.index ["url"], name: "index_app_monitors_on_url"
   end
 
@@ -63,7 +64,9 @@ ActiveRecord::Schema.define(version: 2018_05_21_013933) do
     t.datetime "updated_at", null: false
     t.datetime "last_viewed"
     t.integer "last_viewed_result_id"
+    t.index ["app_monitor_id", "user_id"], name: "index_user_monitors_on_app_monitor_id_and_user_id", unique: true
     t.index ["app_monitor_id"], name: "index_user_monitors_on_app_monitor_id"
+    t.index ["last_viewed_result_id"], name: "index_user_monitors_on_last_viewed_result_id"
     t.index ["user_category_id"], name: "index_user_monitors_on_user_category_id"
     t.index ["user_id"], name: "index_user_monitors_on_user_id"
   end

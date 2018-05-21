@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   namespace :current_user do
     resource :profile
+    resource :notifications, only: :show
   end
 
   namespace :admin do

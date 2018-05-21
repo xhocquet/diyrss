@@ -18,6 +18,9 @@ class NewMonitorResultWorker
       # Do not notify if contents are the same
       next if contents_the_same?
 
+      # Do not notify if setting says so
+      next unless user_monitor.user.user_profile.notify_site
+
       Notification.create!(
         recipient: user_monitor.user,
         action: Notification.actions[:monitor_update],
@@ -28,7 +31,11 @@ class NewMonitorResultWorker
     if e.message =~ /absolute URL needed/
       app_monitor.error!
     else
-      Rollbar.error(e)
+      if Rails.env.development?
+        raise e
+      else
+        Rollbar.error(e)
+      end
     end
   end
 
@@ -37,6 +44,12 @@ class NewMonitorResultWorker
   end
 
   def contents_the_same?
+    # New contents if it's the first time
+    return false if user_monitor.last_viewed_result.nil?
+
+    # First site scrape, new contents!
+    return false if latest_result.nil?
+
     user_monitor.last_viewed_result.payload == latest_result.payload
   end
 end
