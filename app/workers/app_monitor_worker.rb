@@ -32,11 +32,11 @@ class AppMonitorWorker
       # Schedule an 10 minutes unless we've already got jobs. No need for duplicates!
       AppMonitorWorker.perform_in(10.minutes, app_monitor_id) unless existing_scheduled?
     end
-  rescue ArgumentError => e
+  rescue StandardError => e
     if e.message =~ /absolute URL needed/
       app_monitor.error!
     else
-      raise e
+      Rollbar.error(e)
     end
   end
 

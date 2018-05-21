@@ -24,6 +24,12 @@ class NewMonitorResultWorker
         relevant_thing: user_monitor,
       )
     end
+  rescue StandardError => e
+    if e.message =~ /absolute URL needed/
+      app_monitor.error!
+    else
+      Rollbar.error(e)
+    end
   end
 
   def notification_already_exists?
