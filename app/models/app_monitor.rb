@@ -1,5 +1,5 @@
 class AppMonitor < ApplicationRecord
-  after_create :trigger_initial_job
+  after_commit :trigger_initial_job
 
   has_many :monitor_results, inverse_of: :app_monitor
   has_many :user_monitors, inverse_of: :app_monitor
