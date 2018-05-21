@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_19_221405) do
+ActiveRecord::Schema.define(version: 2018_05_21_002833) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2018_05_19_221405) do
   create_table "monitor_results", force: :cascade do |t|
     t.bigint "app_monitor_id"
     t.text "payload"
-    t.integer "status", default: 1
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["app_monitor_id"], name: "index_monitor_results_on_app_monitor_id"
@@ -56,7 +56,6 @@ ActiveRecord::Schema.define(version: 2018_05_19_221405) do
   create_table "user_monitors", force: :cascade do |t|
     t.text "name"
     t.text "url"
-    t.integer "status", default: 0
     t.bigint "app_monitor_id"
     t.bigint "user_id"
     t.bigint "user_category_id"

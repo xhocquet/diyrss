@@ -8,9 +8,8 @@ class AppMonitor < ApplicationRecord
   belongs_to :latest_result, class_name: "MonitorResult", required: false
 
   enum status: [
-    :fresh,
+    :ok,
     :error,
-    :running,
   ]
 
   private

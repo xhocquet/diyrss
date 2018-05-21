@@ -40,7 +40,7 @@ class UserMonitorDashboard < Administrate::BaseDashboard
     :id,
     :name,
     :url,
-    :status,
+
     :created_at,
     :updated_at,
   ].freeze
@@ -54,7 +54,6 @@ class UserMonitorDashboard < Administrate::BaseDashboard
     :user_category,
     :name,
     :url,
-    :status,
   ].freeze
 
   # Overwrite this method to customize how user monitors are displayed
