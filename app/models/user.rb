@@ -8,4 +8,9 @@ class User < ApplicationRecord
   has_many :notifications, inverse_of: :recipient, foreign_key: "recipient_id"
 
   has_one :user_profile
+
+  enum role: {
+    user: 0,
+    admin: 1,
+  }
 end
