@@ -10,10 +10,7 @@
 
   <div class="links-container">
     <% if category.user_monitors.empty? %>
-      <div class="empty-state">
-        <h3 class="text-info">No links</h3>
-        <small>Add one below!</small>
-      </div>
+      <%= render 'empty_states/user_monitors' %>
     <% else %>
       <% category.user_monitors.each do |monitor| %>
         <%= render 'application/link_container', monitor: monitor %>
@@ -22,17 +19,5 @@
     <hr>
   </div>
 
-  <div class="new-link-monitor-container">
-    <%= form_for [category, UserMonitor.new], html: { class: 'form-group' } do  |f| %>
-      <div class="form-group">
-        <%= f.text_field :name, placeholder: "Name", class: 'form-control form-control-sm' %>
-      </div>
-      <div class="form-group">
-        <%= f.text_field :url, placeholder: "URL", class: 'form-control form-control-sm' %>
-      </div>
-      <div class="form-group">
-        <%= f.submit "Create Link", class: 'btn btn-sm btn-info form-control form-control-sm' %>
-      </div>
-    <% end %>
-  </div>
+  <%= render 'dashboard/create_new_monitor', category: category %>
 </div>

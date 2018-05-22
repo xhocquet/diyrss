@@ -1,32 +1,31 @@
-<div class="link-container">
-  <span class="indicator d-none d-lg-block <%= monitor_status_color_class( @notifications.find_by(relevant_thing: monitor) )%>">
-    <i class="fa fa-fw fa-circle" data-toggle="tooltip" data-placement="bottom" title="<%= monitor.last_viewed.try(:strftime, "%m-%e-%y %H:%M") %>"></i>
-  </span>
+<div class="card link-container">
   <a href="<%= redirect_path(monitor.id) %>" target="_blank">
+
     <div class="link-header">
-      <span class="text-info"><%= monitor.name %></span>
+      <div class="name-container">
+        <i class="fa fa-circle <%= monitor_status_color_class( @notifications.find_by(relevant_thing: monitor) )%>" data-toggle="tooltip" data-placement="bottom" title="<%= monitor.last_viewed.try(:strftime, "%m-%e-%y %H:%M") %>"></i>
+        <span class="text-info monitor-name"><%= monitor.name %></span>
+      </div>
       <div>
-        <a href="#" class="refresh-user-monitor-button" data-monitor-id="<%= monitor.id %>">
-          <i class="fa fa-refresh text-secondary" data-toggle="tooltip" data-placement="bottom" title="Refresh"></i>
-        </a>
-        <a href="#" class='toggle-link-form-button'>
-          <i class="fa fa-pencil" data-toggle="tooltip" data-placement="bottom" title="Edit"></i>
-        </a>
+        <i class="fa fa-refresh text-warning refresh-user-monitor-button" data-toggle="tooltip" data-placement="bottom" title="Refresh"></i>
+        <i class="fa fa-pencil text-primary toggle-link-form-button" data-toggle="tooltip" data-placement="bottom" title="Edit"></i>
       </div>
     </div>
-  </a>
-  <div class="link-form">
-    <%= form_for monitor, html: { class: 'form-group' } do  |f| %>
-      <div class="form-group">
-        <%= f.text_field :name, class: 'form-control form-control-sm' %>
-      </div>
-      <div class="form-group">
-        <%= f.text_field :url, class: 'form-control form-control-sm' %>
-      </div>
-      <div>
-        <%= f.submit "Update", class: 'btn btn-sm btn-info form-control-sm' %>
-        <%= link_to "Delete", user_monitor_path(monitor), method: :delete, class: 'btn btn-sm btn-danger form-control-sm' %>
-      </div>
+
+    <div class="link-form">
+      <%= form_for monitor, html: { class: 'form-group' } do  |f| %>
+        <div class="form-group">
+          <%= f.text_field :name, class: 'form-control form-control-sm' %>
+        </div>
+        <div class="form-group">
+          <%= f.text_field :url, class: 'form-control form-control-sm' %>
+        </div>
+        <div>
+          <%= f.submit "Update", class: 'btn btn-sm btn-info form-control-sm' %>
+          <%= link_to "Delete", user_monitor_path(monitor), method: :delete, class: 'btn btn-sm btn-danger form-control-sm' %>
+        </div>
       <% end %>
-  </div>
+    </div>
+
+  </a>
 </div>

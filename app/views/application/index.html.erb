@@ -13,13 +13,11 @@
 
     <div class="new-category-wrapper">
       <div class="new-category-container">
-        <%= form_for UserCategory.new(user: current_user), html: { class: 'form-group' } do  |f| %>
+        <%= form_for UserCategory.new(user: current_user) do  |f| %>
             <div class="form-group">
               <%= f.text_field :name, class: 'form-control form-control-sm', placeholder: 'Name' %>
             </div>
-            <div class="form-group">
-              <%= f.submit 'Create Category', class: 'btn btn-sm btn-info form-control' %>
-            </div>
+            <%= f.submit 'Create Category', class: 'btn btn-sm btn-info form-control' %>
         <% end %>
       </div>
     </div>

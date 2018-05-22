@@ -15,6 +15,10 @@
     }
 
     @media (--small) {
+      width: 31%;
+    }
+
+    @media (--medium) {
       width: 23%;
     }
 
@@ -25,8 +29,6 @@
 
     .links-container {
       .empty-state {
-        -moz-box-shadow: none;
-        -webkit-box-shadow: none;
         border: 0;
         box-shadow: none;
         margin: 0;
@@ -34,36 +36,29 @@
         width: 100%;
       }
 
+      a:hover {
+        text-decoration: none;
+      }
+
 
       .link-container {
-        border-radius: 4px;
-        border: 1px solid #aaa;
         margin-bottom: 12px;
         padding: 4px 8px;
-        position: relative;
-
-        .indicator {
-          font-size: 10px;
-          left: 6px;
-          pointer: default;
-          position: absolute;
-          top: 8px;
-        }
-
-        a:hover {
-          text-decoration: none !important;
-        }
 
         .link-header {
           display: flex;
           justify-content: space-between;
 
-          a {
-            margin-left: 12px;
+          .name-container {
+            white-space: nowrap;
+            overflow: hidden;
+            flex: 1;
+            margin-right: 4px;
+            text-overflow: ellipsis;
           }
 
-          a:hover {
-            text-decoration: none !important;
+          .toggle-link-form-button, .refresh-user-monitor-button {
+            cursor: pointer;
           }
         }
 
@@ -83,6 +78,10 @@
 
     .new-link-monitor-container {
       margin-top: auto;
+
+      form {
+        margin: 0;
+      }
     }
   }
 
@@ -90,17 +89,17 @@
     flex-basis: 100%;
 
     .new-category-container {
-      margin: 30px auto;
-      -moz-border-radius: 4px;
-      -moz-box-shadow: 0 3px 4px -3px rgba(102, 102, 102, 0.25);
-      -webkit-border-radius: 4px;
-      -webkit-box-shadow: 0 3px 4px -3px rgba(102, 102, 102, 0.25);
       border-radius: 4px;
       border: 1px solid #ddd;
       margin: 30px auto;
-      padding: 20px 40px;
+      margin: 30px auto;
+      padding: 16px;
       text-align: center;
-      width: 40%;
+      width: 98%;
+
+      @media (--very-small) {
+        width: 48%;
+      }
     }
   }
 }

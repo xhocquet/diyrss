@@ -4,6 +4,7 @@
   --footnav-height: 56px;
 }
 
+@custom-media --medium (min-width: 1200px);
 @custom-media --small (min-width: 992px);
 @custom-media --very-small (min-width: 600px);
 
