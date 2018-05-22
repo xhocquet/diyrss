@@ -1,14 +1,14 @@
-<% @notifications.each do |notif| %>
+<% @all_notifications.each do |notif| %>
   <div class="card">
-
+    <a href="<%= notification_redirect_path(notif) %>" class="list-group-item-action">
       <div class="card-body">
         <span class="text-info">
           <strong>
             <i class="fa fa-newspaper-o"></i> Fresh Content!</strong>
         </span>
-        <span class="small float-right text-muted"><%= distance_of_time_in_words(notif.created_at, Time.now.utc) %></span``>
+        <span class="small float-right text-muted"><%= distance_of_time_in_words(notif.created_at, Time.now.utc) %></span>
         <p><%= notification_description(notif.relevant_thing) %></p>
       </div>
-
+    </a>
   </div>
 <% end %>

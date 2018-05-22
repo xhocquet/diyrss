@@ -1,8 +1,12 @@
 body.current_user_notifications.show {
   .card {
-    width: 600px;
+    width: 400px;
     max-width: 100%;
     margin: 20px auto;
     padding: 0;
+
+    p {
+      margin: 1rem 0 0;
+    }
   }
 }

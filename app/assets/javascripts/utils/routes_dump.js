@@ -17,6 +17,14 @@ const RoutesDump = `
                                PUT    /users(.:format)                                                                         devise/registrations#update
                                DELETE /users(.:format)                                                                         devise/registrations#destroy
                                POST   /users(.:format)                                                                         devise/registrations#create
+      new_current_user_profile GET    /current_user/profile/new(.:format)                                                      current_user/profiles#new
+     edit_current_user_profile GET    /current_user/profile/edit(.:format)                                                     current_user/profiles#edit
+          current_user_profile GET    /current_user/profile(.:format)                                                          current_user/profiles#show
+                               PATCH  /current_user/profile(.:format)                                                          current_user/profiles#update
+                               PUT    /current_user/profile(.:format)                                                          current_user/profiles#update
+                               DELETE /current_user/profile(.:format)                                                          current_user/profiles#destroy
+                               POST   /current_user/profile(.:format)                                                          current_user/profiles#create
+    current_user_notifications GET    /current_user/notifications(.:format)                                                    current_user/notifications#show
                    admin_users GET    /admin/users(.:format)                                                                   admin/users#index
                                POST   /admin/users(.:format)                                                                   admin/users#create
                 new_admin_user GET    /admin/users/new(.:format)                                                               admin/users#new
@@ -33,6 +41,7 @@ const RoutesDump = `
                                PATCH  /admin/app_monitors/:id(.:format)                                                        admin/app_monitors#update
                                PUT    /admin/app_monitors/:id(.:format)                                                        admin/app_monitors#update
                                DELETE /admin/app_monitors/:id(.:format)                                                        admin/app_monitors#destroy
+     admin_monitor_result_diff GET    /admin/monitor_results/:monitor_result_id/diff(.:format)                                 admin/monitor_results#diff
          admin_monitor_results GET    /admin/monitor_results(.:format)                                                         admin/monitor_results#index
                                POST   /admin/monitor_results(.:format)                                                         admin/monitor_results#create
       new_admin_monitor_result GET    /admin/monitor_results/new(.:format)                                                     admin/monitor_results#new
@@ -67,6 +76,7 @@ const RoutesDump = `
                                DELETE /admin/user_monitors/:id(.:format)                                                       admin/user_monitors#destroy
                     admin_root GET    /admin(.:format)                                                                         admin/users#index
  api_refresh_app_monitor_index POST   /api/v1/refresh_app_monitor(.:format)                                                    api/refresh_app_monitor#create
+       api_clear_notifications POST   /api/v1/clear_notifications(.:format)                                                    api/clear_notifications#create
                    sidekiq_web        /sidekiq                                                                                 Sidekiq::Web
    user_category_user_monitors GET    /user_categories/:user_category_id/user_monitors(.:format)                               user_monitors#index
                                POST   /user_categories/:user_category_id/user_monitors(.:format)                               user_monitors#create

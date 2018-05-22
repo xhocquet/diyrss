@@ -64,5 +64,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 2000)
       });
   })
+
+  // Clear all notifications
+  $('.clear-notifications-button').click(function(e) {
+    e.preventDefault()
+    const userId = $(e.currentTarget).data('monitor-id')
+    const clearNotificationEndpoint = window.RailsRouter.get('api_clear_notifications')
+
+    $.ajax({
+      url: clearNotificationEndpoint,
+      beforeSend: function( xhr ) {
+        xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+      },
+      type: 'POST',
+      data: {
+        user_id: userId,
+      }
+    })
+      .done(function( data ) {
+        location.reload()
+      })
+  })
 })
 

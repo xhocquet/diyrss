@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   namespace :api do
     scope :v1 do
       resources :refresh_app_monitor, only: :create
+      resources :clear_notifications, only: :create
     end
   end
 

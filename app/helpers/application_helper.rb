@@ -9,11 +9,11 @@ module ApplicationHelper
 
   def notification_description(thing)
     if thing.is_a? UserMonitor
-      "We've found new content for #{thing.name}!"
+      "Go to #{thing.name}!"
     end
   end
 
-  def notification_path(notif)
+  def notification_redirect_path(notif)
     if notif.relevant_thing.is_a? UserMonitor
       redirect_path(notif.relevant_thing.id)
     end
