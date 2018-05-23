@@ -7,6 +7,10 @@
 </header>
 
 <section class="main-content__body">
-  <%= raw @diff %>
+  <% if @diff.present? %>
+    <%= raw @diff %>
+  <% else %>
+    <%= render 'empty_states/monitor_result_diff' %>
+  <% end %>
 </section>
 
