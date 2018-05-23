@@ -23,6 +23,7 @@ class MonitorResultDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :app_monitor,
+    :created_at,
     :status,
   ].freeze
 
