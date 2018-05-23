@@ -6,10 +6,20 @@ class MonitorResult < ApplicationRecord
     :error,
   ]
 
-  def difference_from_last_in_html
-    currentIndex = app_monitor.monitor_results.order(:created_at).index(self)
-    previousResult = app_monitor.monitor_results.order(:created_at)[currentIndex - 1]
+  # def nextResult
+  #   app_monitor.monitor_results.where('id > ?', id).first
+  # end
 
-    Diffy::Diff.new(previousResult.payload, payload).to_s(:html)
+  def previous_result
+    app_monitor.monitor_results.where('id < ?', id).last
+  end
+
+  def difference_from_last_in_html
+    return nil if previous_result.nil?
+    diffy = Diffy::Diff.new(previous_result.payload, payload)
+
+    return nil if diffy.diff.blank?
+
+    Diffy::Diff.new(previous_result.payload, payload).to_s(:html)
   end
 end
