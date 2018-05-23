@@ -23,9 +23,11 @@ gem 'jbuilder', '~> 2.5'
 
 # Web scraping
 gem 'mechanize'
-gem 'wombat'
+gem 'loofah'
+
 # Workers
 gem 'sidekiq'
+
 # Admin
 gem 'administrate'
 
