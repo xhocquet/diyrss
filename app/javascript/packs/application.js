@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Refresh trigger
   $('.refresh-user-monitor-button').click(function(e) {
     e.preventDefault()
+
     const monitorId = $(e.currentTarget).data('monitor-id')
     const refreshEndpoint = window.RailsRouter.get('api_refresh_app_monitor_index')
 

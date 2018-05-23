@@ -31,11 +31,7 @@ class NewMonitorResultWorker
     if e.message =~ /absolute URL needed/
       app_monitor.error!
     else
-      if Rails.env.development?
-        raise e
-      else
-        Rollbar.error(e)
-      end
+      raise e
     end
   end
 

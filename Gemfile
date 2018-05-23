@@ -29,7 +29,7 @@ gem 'loofah'
 gem 'sidekiq'
 
 # Admin
-gem 'administrate'
+gem 'administrate', git: 'https://github.com/thoughtbot/administrate.git', branch: 'master'
 
 gem 'diffy'
 

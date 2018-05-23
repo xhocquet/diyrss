@@ -1,25 +1,33 @@
 class AppMonitorWorker
   include Sidekiq::Worker
 
-  attr_reader :response,
-              :app_monitor_id
+  MONITOR_INTERVAL = 10.minutes
+
+  attr_reader :app_monitor,
+              :app_monitor_id,
+              :last_latest_result,
+              :payload,
+              :response
 
   def perform(app_monitor_id)
     @app_monitor_id = app_monitor_id
-    app_monitor = AppMonitor.find(app_monitor_id)
+    @app_monitor = AppMonitor.find(app_monitor_id)
+    @last_latest_result = app_monitor.latest_result
 
-    # if app_monitor.updated_at < Time.now.utc - 10.minutes
-    #   AppMonitorWorker.perform_in(10.minutes, app_monitor_id)
-    #   return
-    # end
+    # Queue a job for later if we already have an update
+    minimum_time_to_update = app_monitor.updated_at + MONITOR_INTERVAL
 
-    response = Mechanize.new.get(app_monitor.url)
-    body = response.search(:body)
-    fragment = Loofah.fragment(body.to_s).scrub!(:whitewash)
-    payload = fragment.to_s.gsub(/\s/,"")
+    if Time.now.utc < minimum_time_to_update
+      AppMonitorWorker.perform_in(10.minutes, app_monitor_id)
+      return
+    end
+
+    @payload = fetch_and_clean_payload
+    new_content = check_for_new_content
 
     new_result = MonitorResult.create!(
       app_monitor: app_monitor,
+      new_content: new_content,
       payload: payload,
       status: MonitorResult.statuses[:ok],
     )
@@ -36,11 +44,20 @@ class AppMonitorWorker
     if e.message =~ /absolute URL needed/
       app_monitor.error!
     else
-      if Rails.env.development?
-        raise e
-      else
-        Rollbar.error(e)
-      end
+      raise e
     end
+  end
+
+  def fetch_and_clean_payload
+    response = Mechanize.new.get(app_monitor.url)
+    body = response.search(:body)
+    fragment = Loofah.fragment(body.to_s).scrub!(:whitewash)
+    fragment.to_s.gsub(/\s/,"")
+  end
+
+  def check_for_new_content
+    return false if last_latest_result.nil?
+
+    Diffy::Diff.new(last_latest_result.payload, payload).diff.present?
   end
 end
