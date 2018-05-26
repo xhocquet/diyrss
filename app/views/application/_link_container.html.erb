@@ -3,7 +3,7 @@
 
     <div class="link-header">
       <div class="name-container">
-        <i class="fa fa-circle <%= monitor_status_color_class( @notifications.find_by(relevant_thing: monitor) )%>" data-toggle="tooltip" data-placement="bottom" title="<%= monitor.last_viewed.try(:strftime, "%m-%e-%y %H:%M") %>"></i>
+        <i class="fa fa-circle <%= monitor_status_color_class( @notifications.find_by(relevant_thing: monitor) )%>"></i>
         <span class="text-info monitor-name"><%= monitor.name %></span>
       </div>
       <div>

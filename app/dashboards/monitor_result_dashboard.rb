@@ -14,6 +14,7 @@ class MonitorResultDashboard < Administrate::BaseDashboard
     status: Field::String.with_options(searchable: false),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    new_content: Field::Boolean,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -25,6 +26,7 @@ class MonitorResultDashboard < Administrate::BaseDashboard
     :app_monitor,
     :created_at,
     :status,
+    :new_content,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -36,6 +38,7 @@ class MonitorResultDashboard < Administrate::BaseDashboard
     :status,
     :created_at,
     :updated_at,
+    :new_content,
   ].freeze
 
   # FORM_ATTRIBUTES

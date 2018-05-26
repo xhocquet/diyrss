@@ -55,6 +55,12 @@
             flex: 1;
             margin-right: 4px;
             text-overflow: ellipsis;
+
+            i {
+              font-size: 10px;
+              line-height: 24px;
+              vertical-align: top;
+            }
           }
 
           .toggle-link-form-button, .refresh-user-monitor-button {
