@@ -50,7 +50,14 @@ class AppMonitorWorker
 
   def fetch_and_clean_payload
     response = Mechanize.new.get(app_monitor.url)
-    body = response.search(:body)
+
+    if app_monitor.selector.present?
+      nodes = response.search(app_monitor.selector)
+      body = nodes.to_s
+    else
+      body = response.search(:body)
+    end
+
     fragment = Loofah.fragment(body.to_s).scrub!(:whitewash)
     fragment.to_s.gsub(/\s/,"")
   end

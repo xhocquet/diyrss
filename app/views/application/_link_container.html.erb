@@ -1,11 +1,10 @@
 <div class="card link-container">
-  <a href="<%= redirect_path(monitor.id) %>" target="_blank">
 
     <div class="link-header">
-      <div class="name-container">
-        <i class="fa fa-circle <%= monitor_status_color_class( @notifications.find_by(relevant_thing: monitor) )%>"></i>
-        <span class="text-info monitor-name"><%= monitor.name %></span>
-      </div>
+      <a href="<%= redirect_path(monitor.id) %>" target="_blank" class="name-container">
+          <i class="fa fa-circle <%= monitor_status_color_class( @notifications.find_by(relevant_thing: monitor) )%>"></i>
+          <span class="text-info monitor-name"><%= monitor.name %></span>
+      </a>
       <div>
         <i class="fa fa-refresh text-warning refresh-user-monitor-button" data-monitor-id="<%= monitor.id %>" data-toggle="tooltip" data-placement="bottom" title="Refresh"></i>
         <i class="fa fa-pencil text-primary toggle-link-form-button" data-toggle="tooltip" data-placement="bottom" title="Edit"></i>
