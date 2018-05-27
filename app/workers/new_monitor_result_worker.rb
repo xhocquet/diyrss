@@ -5,9 +5,13 @@ class NewMonitorResultWorker
               :latest_result,
               :user_monitor
 
+  MAX_MONITOR_COUNT = 500
+
   def perform(app_monitor_id)
     @app_monitor = AppMonitor.find(app_monitor_id)
     @latest_result = app_monitor.latest_result
+
+    delete_old_results
 
     app_monitor.user_monitors.find_each do |user_monitor|
       @user_monitor = user_monitor
@@ -37,6 +41,12 @@ class NewMonitorResultWorker
 
   def notification_already_exists?
     user_monitor.user.notifications.unread.where(relevant_thing: user_monitor).present?
+  end
+
+  def delete_old_results
+    result_count = app_monitor.monitor_results.count
+    to_delete = [result_count - MAX_MONITOR_COUNT, 0].max
+    app_monitor.monitor_results.first(to_delete).map(&:destroy)
   end
 
   def contents_the_same?
