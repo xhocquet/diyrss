@@ -190,6 +190,13 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
   color: #868e96;
 }
 
+#mainNav .navbar-collapse .navbar-sidenav > .nav-item > .nav-link > span.label {
+  display: inline;
+}
+#mainNav .navbar-collapse .ml-auto > .nav-item > .nav-link > span.label {
+    display: inline;
+  }
+
 #mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item > .nav-link:hover {
   color: #adb5bd;
 }
@@ -212,6 +219,12 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
   #mainNav.navbar-dark .navbar-collapse .navbar-sidenav li.active a {
     color: white !important;
     background-color: #495057;
+  }
+  #mainNav .navbar-collapse .navbar-sidenav > .nav-item > .nav-link > span.label {
+    display: none;
+  }
+  #mainNav .navbar-collapse .ml-auto > .nav-item > .nav-link > span.label {
+    display: none;
   }
   #mainNav.navbar-dark .navbar-collapse .navbar-sidenav li.active a:focus, #mainNav.navbar-dark .navbar-collapse .navbar-sidenav li.active a:hover {
     color: white;
