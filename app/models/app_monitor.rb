@@ -12,6 +12,10 @@ class AppMonitor < ApplicationRecord
     :error,
   ]
 
+  def favicon_url
+    "http://#{URI::parse(url).host}/favicon.ico"
+  end
+
   private
     def trigger_initial_job
       AppMonitorWorker.perform_async(id)
