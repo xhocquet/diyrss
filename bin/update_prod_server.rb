@@ -12,11 +12,14 @@ puts "Clearing production assets"
 puts "Updating gems"
 `#{ENV_VARS} bundle install`
 puts "Updating node modules and compiling assets"
-`#{ENV_VARS} rails assets:precompile`
+`#{ENV_VARS} bundle exec rails assets:precompile`
 puts "Migrating database"
-`#{ENV_VARS} rails db:migrate`
+`#{ENV_VARS} bundle exec rails db:migrate`
+
+puts "Updating CRON tab"
+`#{ENV_VARS} whenever --update-crontab`
 
 puts "Restarting Puma and Sidekiq..."
 `#{ENV_VARS} bundle exec puma -C config/puma.rb -p 80 -d`
-`#{ENV_VARS} bundle exec sidekiq -d -L log/sidekiq.log`
+`#{ENV_VARS} bundle exec sidekiq -q default -q mailers -d -L log/sidekiq.log`
 puts "Puma and Sidekiq restarted"
