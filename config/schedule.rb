@@ -18,7 +18,7 @@ set :output, "logs/cron.log"
 # end
 
 every 1.day, at: '9 am' do
-  rake "reports:mailer"
+  rake "reports:daily"
 end
 
 # Learn more: http://github.com/javan/whenever

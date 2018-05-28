@@ -44,9 +44,9 @@ class NewMonitorResultWorker
   end
 
   def delete_old_results
-    result_count = app_monitor.monitor_results.count
+    result_count = app_monitor.monitor_results.where(new_content: false).count
     to_delete = [result_count - MAX_MONITOR_COUNT, 0].max
-    app_monitor.monitor_results.first(to_delete).map(&:destroy)
+    app_monitor.monitor_results.where(new_content: false).first(to_delete).map(&:destroy)
   end
 
   def contents_the_same?

@@ -2,14 +2,20 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   root 'application#index'
-  get 'about', controller: 'application', action: 'about'
+
   get 'redirect/:monitor_id', controller: :redirects, action: :redirect, as: :redirect
+
+  namespace :about do
+    root '', action: :index
+  end
 
   devise_for :users
 
   namespace :current_user do
     resource :profile
     resource :notifications, only: :show
+
+    resources :selector_suggestions
   end
 
   namespace :admin do
