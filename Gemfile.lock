@@ -83,6 +83,8 @@ GEM
     concurrent-ruby (1.0.5)
     connection_pool (2.2.1)
     crass (1.0.4)
+    css_parser (1.6.0)
+      addressable
     datetime_picker_rails (0.0.7)
       momentjs-rails (>= 2.8.1)
     devise (4.4.3)
@@ -99,6 +101,7 @@ GEM
     ffi (1.9.23)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    htmlentities (4.3.4)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (1.0.1)
@@ -122,6 +125,10 @@ GEM
       activerecord
       kaminari-core (= 1.1.1)
     kaminari-core (1.1.1)
+    launchy (2.4.3)
+      addressable (~> 2.3)
+    letter_opener (1.6.0)
+      launchy (~> 2.2)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -161,6 +168,13 @@ GEM
     ntlm-http (0.1.1)
     orm_adapter (0.5.0)
     pg (1.0.0)
+    premailer (1.11.1)
+      addressable
+      css_parser (>= 1.6.0)
+      htmlentities (>= 4.0.0)
+    premailer-rails (1.10.2)
+      actionmailer (>= 3, < 6)
+      premailer (~> 1.7, >= 1.7.9)
     public_suffix (3.0.2)
     puma (3.11.4)
     rack (2.0.5)
@@ -282,10 +296,12 @@ DEPENDENCIES
   diffy
   jbuilder (~> 2.5)
   jquery-rails
+  letter_opener
   listen (>= 3.0.5, < 3.2)
   loofah
   mechanize
   pg
+  premailer-rails
   puma (~> 3.7)
   rails (~> 5.2.0)
   rollbar

@@ -65,6 +65,16 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "diyrss_#{Rails.env}"
 
+  ActionMailer::Base.smtp_settings = {
+    user_name: Rails.application.secrets.sendgrid.username,
+    password: Rails.application.secrets.sendgrid.password,
+    domain: Rails.application.secrets.sendgrid.domain,
+    address: 'smtp.sendgrid.net',
+    port: 587,
+    authentication: :plain,
+    enable_starttls_auto: true,
+  }
+
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.

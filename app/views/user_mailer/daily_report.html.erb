@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title><%= @subject %></title>
+    <%= stylesheet_link_tag "mailer" %>
+  </head>
+  <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">
+    <center>
+    <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
+      <tr>
+        <td align="center" valign="top" id="bodyCell">
+          <!-- BEGIN TEMPLATE // -->
+          <table border="0" cellpadding="0" cellspacing="0" id="templateContainer">
+            <tr>
+              <td align="center" valign="top">
+                <!-- BEGIN PREHEADER // -->
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templatePreheader">
+                  <tr>
+                    <td valign="top" class="preheaderContent" style="padding-top:10px; padding-right:20px; padding-bottom:10px; padding-left:20px;" mc:edit="preheader_content00">
+                      We've got <%= pluralize(@notifications.size, 'new update') %> waiting for you! <%= link_to 'See them on your dashboard', root_url %>
+                    </td>
+                  </tr>
+                </table>
+                <!-- // END PREHEADER -->
+              </td>
+            </tr>
+            <tr>
+              <td align="center" valign="top">
+                <!-- BEGIN BODY // -->
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateBody">
+                  <tr>
+                    <td valign="top" class="bodyContent" mc:edit="body_content00">
+                      <h1>You've got new content!</h1>
+                      While you were away, we picked up <%= pluralize(@notifications.size, 'new update') %> for you. See a summary below, or navigate to your <%= link_to 'dashboard', root_url %> to see all of your updates!
+                    </td>
+                  </tr>
+                </table>
+                <!-- // END BODY -->
+              </td>
+            </tr>
+            <tr>
+              <td align="center" valign="top">
+                <!-- BEGIN COLUMNS // -->
+                <table border="0" cellpadding="20" cellspacing="0" width="100%" id="templateColumns">
+                  <tr mc:repeatable>
+                    <td align="left" valign="top" style="padding-bottom:0;">
+                      Your updates:
+                      <br>
+                      <br>
+                      <ul class="notifications-list">
+                        <% @notifications.each do |notif| %>
+                          <li>
+                            <img src="<%= notif.relevant_thing.app_monitor.favicon_url %>" />
+                            <%= notif.relevant_thing.name %>
+                          </li><br>
+                        <% end %>
+                      </ul>
+                    </td>
+                  </tr>
+                </table>
+                <!-- // END COLUMNS -->
+              </td>
+            </tr>
+            <tr>
+              <td align="center" valign="top">
+                <!-- BEGIN FOOTER // -->
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateFooter">
+                  <tr>
+                    <td valign="top" class="footerContent" mc:edit="footer_content00">
+                      <a href="http://diyrss.info">DIY RSS</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td valign="top" class="footerContent" style="padding-top:0;" mc:edit="footer_content01">
+                      <em>Copyright &copy; <%= Time.now.year %> DIY RSS, All rights reserved.</em>
+                      <br />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td valign="top" class="footerContent" style="padding-top:0;" mc:edit="footer_content02">
+                      <a href="#TODO">stop getting these emails</a>&nbsp;&nbsp;&nbsp;<a href="<%= current_user_profile_url %>">update email settings</a>&nbsp;
+                    </td>
+                  </tr>
+                </table>
+                <!-- // END FOOTER -->
+              </td>
+            </tr>
+          </table>
+          <!-- // END TEMPLATE -->
+        </td>
+      </tr>
+    </table>
+    </center>
+  </body>
+</html>

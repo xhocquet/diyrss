@@ -31,7 +31,11 @@ gem 'sidekiq'
 # Admin
 gem 'administrate', git: 'https://github.com/thoughtbot/administrate.git', branch: 'master'
 
+# Nice diffs
 gem 'diffy'
+
+# Email styling
+gem 'premailer-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -40,6 +44,7 @@ group :development, :test do
 end
 
 group :development do
+  gem "letter_opener"
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'

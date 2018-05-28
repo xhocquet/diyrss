@@ -5,7 +5,7 @@
     <%= form_for @profile, url: current_user_profile_path do |f| %>
       <div class="form-check">
         <%= f.check_box :notify_email, class: 'form-check-input' %>
-        <%= f.label 'Notify me via email', class: 'form-check-label' %>
+        <%= f.label 'Email me daily updates', class: 'form-check-label' %>
       </div>
       <div class="form-check">
         <%= f.check_box :notify_site, class: 'form-check-input' %>

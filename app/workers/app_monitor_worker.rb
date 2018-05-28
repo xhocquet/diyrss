@@ -51,6 +51,9 @@ class AppMonitorWorker
   def fetch_and_clean_payload
     response = Mechanize.new.get(app_monitor.url)
 
+    # Sometimes Mechanize doesn't parse it right away
+    response = Nokogiri::HTML(response.body) if response.is_a? Mechanize::File
+
     if app_monitor.selector.present?
       nodes = response.search(app_monitor.selector)
       body = nodes.to_s
