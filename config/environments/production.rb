@@ -66,9 +66,9 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "diyrss_#{Rails.env}"
 
   ActionMailer::Base.smtp_settings = {
-    user_name: Rails.application.secrets.sendgrid.username,
-    password: Rails.application.secrets.sendgrid.password,
-    domain: Rails.application.secrets.sendgrid.domain,
+    user_name: Rails.application.secrets.sendgrid[:username],
+    password: Rails.application.secrets.sendgrid[:password],
+    domain: Rails.application.secrets.sendgrid[:domain],
     address: 'smtp.sendgrid.net',
     port: 587,
     authentication: :plain,
