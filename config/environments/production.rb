@@ -63,6 +63,9 @@ Rails.application.configure do
 
   config.active_job.queue_adapter = :sidekiq
 
+  config.action_mailer.asset_host = "http://diyrss.info"
+  config.action_mailer.default_url_options = { host: 'diyrss.info' }
+
   ActionMailer::Base.smtp_settings = {
     user_name: Rails.application.secrets.sendgrid[:username],
     password: Rails.application.secrets.sendgrid[:password],
