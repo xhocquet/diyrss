@@ -1,24 +1,9 @@
-# README
+## DIYRSS
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+DIY RSS fills a gap in the web: a low-cost way to check websites for updates.
 
-Things you may want to cover:
+We used to have RSS feeds on most major sites. However as everyone starts moving towards platforms, SSO, and other technologies, RSS fell behind in priorities.
 
-* Ruby version
+My proposed solution is a crowd-contirbuted monitoring application that will monitor and notify users when updates are posted. 
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+To start, it will be fairly simple. As time goes on, I hope to implement site-specific tuning that improves the quality of the results.
