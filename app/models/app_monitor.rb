@@ -4,6 +4,7 @@ class AppMonitor < ApplicationRecord
   has_many :monitor_results, inverse_of: :app_monitor, dependent: :destroy
   has_many :user_monitors, inverse_of: :app_monitor, dependent: :destroy
   has_many :users, through: :user_monitors
+  has_many :selector_suggestions, inverse_of: :app_monitor
 
   belongs_to :latest_result, class_name: "MonitorResult", required: false
 

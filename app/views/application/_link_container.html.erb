@@ -23,7 +23,7 @@
         <div>
           <%= f.submit "Update", class: 'btn btn-sm btn-info form-control-sm' %>
           <%= link_to "Delete", user_monitor_path(monitor), method: :delete, class: 'btn btn-sm btn-danger form-control-sm' %>
-          <a class="small text-secondary pull-right help-us-link">help us!</a>
+          <a href="<%= new_current_user_selector_suggestion_path(monitorId: monitor.app_monitor.id) %>" class="small text-secondary pull-right help-us-link">help us!</a>
         </div>
       <% end %>
     </div>

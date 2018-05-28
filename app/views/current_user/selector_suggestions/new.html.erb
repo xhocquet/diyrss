@@ -1,0 +1,26 @@
+<div class="card bg-light profile-card">
+  <div class="card-body">
+    <h5 class="card-title">Help us improve our detection!</h5>
+    <hr>
+    <p>As part of a crowd-sourced approach, we offer users a way to suggest improvements to the site monitors DIY RSS runs.</p>
+    <p>While a smarter approach is worked on, having the community help out is a great way to get everyone's favorite sites updating reliably.</p>
+    <br>
+    <div class="col-md-12">
+      <%= form_for @suggestion, url: current_user_selector_suggestions_path do |f| %>
+        <div class="form-group row">
+          <%= f.hidden_field :app_monitor_id %>
+          <%= f.text_field :selector, class: 'form-control', placeholder: ".class-selector" %>
+          <small class="form-text text-muted">
+            Try to choose headers or simple selectors for unique items. Be careful of containers with 'likes' or comments which will trigger changes within our system.
+          </small>
+        </div>
+        <div class="form-group row">
+          <% if Rails.env.production? %>
+            <%= recaptcha_tags %>
+          <% end %>
+          <%= f.submit 'Submit', class: 'btn btn-success btn-sm btn-block' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

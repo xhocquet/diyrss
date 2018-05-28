@@ -15,7 +15,8 @@ Rails.application.routes.draw do
     resource :profile
     resource :notifications, only: :show
 
-    resources :selector_suggestions
+    resources :selector_suggestions, only: [:new, :create]
+    get 'selector_suggestions/success'
   end
 
   namespace :admin do
@@ -24,6 +25,7 @@ Rails.application.routes.draw do
     resources :monitor_results do
       get :diff
     end
+    resources :selector_suggestions
     resources :notifications
     resources :user_categories
     resources :user_monitors
