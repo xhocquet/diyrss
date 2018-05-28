@@ -1,23 +1,22 @@
+ENV_VARS = "RAILS_ENV=production RACK_ENV=production RAILS_SERVE_STATIC_FILES=true"
+
 puts "Stopping Sidekiq and Puma..."
 `ps -ef | grep sidekiq | grep -v grep | awk '{print $2}' | xargs kill -9`
 `ps -ef | grep puma | grep -v grep | awk '{print $2}' | xargs kill -9`
 puts "Sidekiq and Puma stopped"
 
-puts "Stashing production assets"
-`git stash`
+puts "Clearing production assets"
+`rm -rf public/assets/`
 `git pull`
 
 puts "Updating gems"
-`RAILS_ENV=production RACK_ENV=production RAILS_SERVE_STATIC_FILES=true bundle install`
-puts "Updating node modules"
-`RAILS_ENV=production RACK_ENV=production RAILS_SERVE_STATIC_FILES=true yarn`
+`#{ENV_VARS} bundle install`
+puts "Updating node modules and compiling assets"
+`#{ENV_VARS} rails assets:precompile`
 puts "Migrating database"
-`RAILS_ENV=production RACK_ENV=production RAILS_SERVE_STATIC_FILES=true rails db:migrate`
-
-puts "Restoring stashed production assets"
-`git stash pop`
+`#{ENV_VARS} rails db:migrate`
 
 puts "Restarting Puma and Sidekiq..."
-`RAILS_ENV=production RACK_ENV=production RAILS_SERVE_STATIC_FILES=true bundle exec puma -C config/puma.rb -p 80 -d`
-`RAILS_ENV=production RACK_ENV=production RAILS_SERVE_STATIC_FILES=true bundle exec sidekiq -d -L log/sidekiq.log`
+`#{ENV_VARS} bundle exec puma -C config/puma.rb -p 80 -d`
+`#{ENV_VARS} bundle exec sidekiq -d -L log/sidekiq.log`
 puts "Puma and Sidekiq restarted"

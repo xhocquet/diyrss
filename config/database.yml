@@ -2,7 +2,7 @@ default: &default
   adapter:  postgresql
   host: "<%= ENV['DATABASE_HOST'] || 'localhost' %>"
   port: 5432
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 15 } %>
   timeout: 5000
 
 development:
