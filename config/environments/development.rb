@@ -70,3 +70,5 @@ Rails.application.configure do
     Bullet.rails_logger = true
   end
 end
+
+Rails.application.routes.default_url_options = { host: 'localhost', port: 5000 }

@@ -11,6 +11,10 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  resources :users, only: [] do
+    resources :rss_feeds, only: :show
+  end
+
   namespace :current_user do
     resource :profile
     resource :notifications, only: :show

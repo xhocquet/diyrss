@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_28_171622) do
+ActiveRecord::Schema.define(version: 2018_05_30_043325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,24 @@ ActiveRecord::Schema.define(version: 2018_05_28_171622) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["recipient_id"], name: "index_notifications_on_recipient_id"
+  end
+
+  create_table "rss_feeds", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name", null: false
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_rss_feeds_on_user_id"
+  end
+
+  create_table "rss_feeds_user_monitors", force: :cascade do |t|
+    t.bigint "rss_feed_id"
+    t.bigint "user_monitor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rss_feed_id"], name: "index_rss_feeds_user_monitors_on_rss_feed_id"
+    t.index ["user_monitor_id"], name: "index_rss_feeds_user_monitors_on_user_monitor_id"
   end
 
   create_table "selector_suggestions", force: :cascade do |t|
