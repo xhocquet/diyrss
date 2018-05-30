@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   namespace :current_user do
     resource :profile
     resource :notifications, only: :show
+    resources :rss_feeds
 
     resources :selector_suggestions, only: [:new, :create]
     get 'selector_suggestions/success'

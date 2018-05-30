@@ -87,6 +87,12 @@ body.fixed-nav {
   text-overflow: ellipsis;
 }
 
+#mainNav .navbar-logo {
+  width: 32px;
+  margin-right: 16px;
+  z-index: inherit;
+}
+
 @media (--small) {
   #mainNav .navbar-brand {
     width: var(--sidenav-width);
