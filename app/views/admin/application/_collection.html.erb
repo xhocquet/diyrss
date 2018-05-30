@@ -82,6 +82,16 @@ to display a collection of resources in an HTML table.
           %></td>
         <% end %>
 
+        <% if resource.is_a? SelectorSuggestion %>
+          <td><%= link_to(
+            "Confirm",
+            [namespace, resource, :confirm],
+            class: "action-edit",
+            method: :post,
+          )
+          %></td>
+        <% end %>
+
         <% if valid_action? :edit, collection_presenter.resource_name %>
           <td><%= link_to(
             t("administrate.actions.edit"),

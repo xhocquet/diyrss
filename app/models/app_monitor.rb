@@ -17,6 +17,10 @@ class AppMonitor < ApplicationRecord
     "http://#{URI::parse(url).host}/favicon.ico"
   end
 
+  def last_new_content
+    monitor_results.where(new_content: true).last
+  end
+
   private
     def trigger_initial_job
       AppMonitorWorker.perform_async(id)

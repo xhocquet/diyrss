@@ -10,6 +10,11 @@ module Admin
     #     per(10)
     # end
 
+    def confirm
+      selector_suggestion = SelectorSuggestion.find(params.require(:selector_suggestion_id))
+      # todo when I add status enums
+    end
+
     # Define a custom finder by overriding the `find_resource` method:
     # def find_resource(param)
     #   AppMonitor.find_by!(slug: param)

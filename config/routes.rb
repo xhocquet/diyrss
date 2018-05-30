@@ -25,7 +25,9 @@ Rails.application.routes.draw do
     resources :monitor_results do
       get :diff
     end
-    resources :selector_suggestions
+    resources :selector_suggestions do
+      post :confirm
+    end
     resources :notifications
     resources :user_categories
     resources :user_monitors
