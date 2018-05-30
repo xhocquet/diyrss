@@ -1,0 +1,15 @@
+body.devise_sessions, body.devise_passwords, body.devise_registrations, body.devise_confirmations {
+  .content-wrapper {
+    background: #343a40;
+  }
+}
+
+body.devise_sessions, body.devise_passwords, body.devise_registrations, body.devise_confirmations {
+  footer {
+    display: none;
+  }
+}
+
+.card-login, .card-register {
+  max-width: 25rem;
+}

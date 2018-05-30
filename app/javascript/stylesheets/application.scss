@@ -1,8 +1,10 @@
 /*SHARED*/
 @import 'shared/layout';
+@import 'shared/devise';
 
 /*PAGES*/
 @import 'pages/index';
 @import 'pages/profile';
 @import 'pages/about';
 @import 'pages/notifications';
+@import 'pages/rss';
