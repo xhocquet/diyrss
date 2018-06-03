@@ -1,4 +1,4 @@
-<div class="category-container">
+<div class="category-container" data-item-id="<%= category.id %>">
   <div class="fa category-header">
     <h3><%= category.name %></h3>
     <%= button_to user_category_path(category), method: :delete, class: 'btn btn-sm btn-danger' do %>

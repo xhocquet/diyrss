@@ -11,8 +11,10 @@
       <% end %>
     <% end %>
 
-    <div class="new-category-wrapper">
-      <div class="new-category-container">
+
+      <div class="category-container" data-item-id="999999">
+        <h3 class="category-header">Add a new Category</h3>
+        <hr>
         <%= form_for UserCategory.new(user: current_user) do  |f| %>
             <div class="form-group">
               <%= f.text_field :name, class: 'form-control form-control-sm', placeholder: 'Name' %>
@@ -21,33 +23,8 @@
         <% end %>
       </div>
     </div>
-  </div>
+
 <% else %>
-  <div class="card bg-light profile-card">
-    <div class="card-body">
-      <h5 class="card-title">Sign up to start!</h5>
-
-      <%= form_for(:user, url: registration_path(:user)) do |f| %>
-        <div class="form-group">
-          <%= f.label :email, class: '' %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :password, class: '' %><br />
-          <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :password_confirmation, class: '' %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
-        </div>
-
-        <div class="actions">
-          <%= f.submit "Sign up", class: 'btn btn-info form-control' %>
-        </div>
-      <% end %>
-    </div>
-  </div>
+  <%= render 'users/registrations/sign_up_card' %>
 <% end %>
 

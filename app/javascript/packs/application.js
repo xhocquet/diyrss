@@ -1,8 +1,10 @@
 /* eslint no-console: 0 */
-
 import "jquery"
 import "jquery-ujs"
 import "bootstrap"
+import jQueryBridget from 'jquery-bridget'
+
+import setupLayout from 'src/layout'
 
 // STYLES
 import '../stylesheets/application'
@@ -11,6 +13,8 @@ import Routes from 'javascripts/utils/routes'
 window.RailsRouter = new Routes()
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  setupLayout()
 
   // Configure tooltips for collapsed side navigation
   $('.navbar-sidenav [data-toggle="tooltip"]').tooltip({

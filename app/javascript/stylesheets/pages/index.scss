@@ -1,14 +1,8 @@
 .categories-container {
-  display: flex;
-  flex-wrap: wrap;
-
   .category-container {
     border: 1px solid #ddd;
     border-radius: 4px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-    display: flex;
-    flex-direction: column;
-    margin: 12px 1% 30px;
     padding: 12px 16px;
     width: 98%;
 
@@ -22,6 +16,14 @@
 
     @media (--medium) {
       width: 23%;
+    }
+
+    &.is-dragging,
+    /* Packery adds class while transitioning to drop position */
+    &.is-positioning-post-drag {
+      border-width: 5px;
+      border-style: dashed;
+      z-index: 2; /* keep dragged item on top */
     }
 
     .category-header {
@@ -109,39 +111,20 @@
     }
 
     .new-link-monitor-container {
-      margin-top: auto;
-
       form {
         margin: 0;
       }
     }
   }
 
-  .new-category-wrapper {
-    flex-basis: 100%;
-
-    .new-category-container {
-      border-radius: 4px;
-      border: 1px solid #ddd;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-      margin: 30px auto;
-      margin: 30px auto;
-      padding: 16px;
-      text-align: center;
-      width: 98%;
-
-      @media (--very-small) {
-        width: 48%;
-      }
-    }
+  .packery-drop-placeholder {
+    outline: 3px dashed #138496;
+    outline-offset: -6px;
+    transition: transform 0.2s;
   }
 }
 
 .empty-state {
-  -moz-border-radius: 4px;
-  -moz-box-shadow: 0 3px 4px -3px rgba(102, 102, 102, 0.25);
-  -webkit-border-radius: 4px;
-  -webkit-box-shadow: 0 3px 4px -3px rgba(102, 102, 102, 0.25);
   background-color: #fefefe;
   border-radius: 4px;
   border: 1px solid #ddd;

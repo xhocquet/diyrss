@@ -4,8 +4,11 @@
   "dependencies": {
     "@rails/webpacker": "3.5",
     "bootstrap": "^4.1.1",
+    "draggabilly": "^2.2.0",
     "jquery": "^3.3.1",
+    "jquery-bridget": "^2.0.1",
     "jquery-ujs": "^1.2.2",
+    "packery": "^2.1.1",
     "popper.js": "^1.14.3",
     "webpack-merge": "^4.1.2"
   },
