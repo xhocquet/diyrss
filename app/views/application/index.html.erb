@@ -12,14 +12,14 @@
     <% end %>
 
 
-      <div class="category-container" data-item-id="999999">
+      <div class="category-container new-category-container" data-item-id="999999">
         <h3 class="category-header">Add a new Category</h3>
         <hr>
         <%= form_for UserCategory.new(user: current_user) do  |f| %>
             <div class="form-group">
               <%= f.text_field :name, class: 'form-control form-control-sm', placeholder: 'Name' %>
             </div>
-            <%= f.submit 'Create Category', class: 'btn btn-sm btn-info form-control' %>
+            <%= f.submit 'Create Category', class: 'btn btn-sm btn-success form-control' %>
         <% end %>
       </div>
     </div>

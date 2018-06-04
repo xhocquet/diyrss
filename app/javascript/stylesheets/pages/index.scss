@@ -26,6 +26,10 @@
       z-index: 2; /* keep dragged item on top */
     }
 
+    &.new-category-container {
+      background-color: #eee;
+    }
+
     .category-header {
       display: flex;
       justify-content: space-between;
