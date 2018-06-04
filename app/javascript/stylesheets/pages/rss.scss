@@ -1,3 +1,37 @@
 .rss-feeds-card {
-  width: 900px;
+  width: 800px;
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+
+    .rss-row {
+      display: flex;
+      height: 46px;
+      line-height: 38px;
+
+      &:hover {
+        background-color: #e4e4e4;
+      }
+
+      .cell {
+        padding: 4px;
+        line-height: inherit;
+      }
+
+      .feed-name {
+        flex: 1;
+      }
+
+      .feed-url {
+        flex: 2;
+      }
+
+      .feed-button {
+        flex: 0;
+        padding: 4px;
+      }
+    }
+  }
+
 }

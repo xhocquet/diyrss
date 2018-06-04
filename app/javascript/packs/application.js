@@ -11,16 +11,10 @@ import setupLayout from 'src/layout'
 import '../stylesheets/application'
 
 import Routes from 'javascripts/utils/routes'
-window.RailsRouter = new Routes()
 
 document.addEventListener('DOMContentLoaded', () => {
 
   setupLayout()
-
-  // Configure tooltips for collapsed side navigation
-  $('.navbar-sidenav [data-toggle="tooltip"]').tooltip({
-    template: '<div class="tooltip navbar-sidenav-tooltip" role="tooltip" style="pointer-events: none"><div class="arrow"></div><div class="tooltip-inner"></div></div>'
-  })
 
   // Prevent the content wrapper from scrolling when the fixed side navigation hovered over
   $('body.fixed-nav .navbar-sidenav, body.fixed-nav .sidenav-toggler, body.fixed-nav .navbar-collapse').on('mousewheel DOMMouseScroll', function(e) {
@@ -50,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     e.preventDefault()
 
     const monitorId = $(e.currentTarget).data('monitor-id')
-    const refreshEndpoint = window.RailsRouter.get('api_refresh_app_monitor_index')
+    const refreshEndpoint = Routes.get('api_refresh_app_monitor_index')
 
     $.ajax({
       url: refreshEndpoint,
@@ -75,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
   $('.clear-notifications-button').click(function(e) {
     e.preventDefault()
     const userId = $(e.currentTarget).data('monitor-id')
-    const clearNotificationEndpoint = window.RailsRouter.get('api_clear_notifications')
+    const clearNotificationEndpoint = Routes.get('api_clear_notifications')
 
     $.ajax({
       url: clearNotificationEndpoint,

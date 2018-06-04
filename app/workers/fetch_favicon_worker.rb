@@ -42,6 +42,7 @@ class FetchFaviconWorker
       if res.code == 200 && res.class == Mechanize::Image
         contents = StringIO.new(res.body)
         app_monitor.favicon.attach(io: contents, filename: "favicon-#{app_monitor.url.gsub(/\W/,'')}.ico")
+        return
       end
     end
   end
