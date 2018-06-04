@@ -3,7 +3,7 @@
     <div class="link-header">
       <a href="<%= redirect_path(monitor.id) %>" target="_blank" class="name-container">
         <i class="fa fa-circle <%= monitor_status_color_class( @notifications.find{ |x| x.relevant_thing == monitor } )%>"></i>
-        <img src="<%= monitor.app_monitor.favicon_url %>" />
+        <img src="<%= favicon_url(monitor) %>" />
         <span class="text-info monitor-name"><%= monitor.name %></span>
       </a>
       <div>

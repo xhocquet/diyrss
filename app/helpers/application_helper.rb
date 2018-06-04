@@ -18,4 +18,12 @@ module ApplicationHelper
       redirect_path(notif.relevant_thing.id)
     end
   end
+
+  def favicon_url(monitor)
+    if monitor.app_monitor.favicon.attached?
+      url_for(monitor.app_monitor.favicon)
+    else
+      image_path("rss.svg")
+    end
+  end
 end

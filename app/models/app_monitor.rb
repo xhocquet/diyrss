@@ -8,14 +8,12 @@ class AppMonitor < ApplicationRecord
 
   belongs_to :latest_result, class_name: "MonitorResult", required: false
 
+  has_one_attached :favicon
+
   enum status: [
     :ok,
     :error,
   ]
-
-  def favicon_url
-    "http://#{URI::parse(url).host}/favicon.ico"
-  end
 
   def last_new_content
     monitor_results.where(new_content: true).last
