@@ -2,6 +2,7 @@
 import "jquery"
 import "jquery-ujs"
 import "bootstrap"
+
 import jQueryBridget from 'jquery-bridget'
 
 import setupLayout from 'src/layout'
