@@ -1,7 +1,7 @@
 module CurrentUser
   class NotificationsController < BaseController
     def show
-      @all_notifications = current_user.notifications.limit(50)
+      @notifications = current_user.notifications.limit(50)
     end
   end
 end

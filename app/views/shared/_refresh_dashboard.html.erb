@@ -1,0 +1,7 @@
+<% if params[:controller] == "application" && params[:action] == "index" %>
+  <li class="nav-item"  data-toggle="tooltip" data-placement="bottom" title="Refresh layout">
+    <%= link_to '#resetLayout',  class: "nav-link refresh-layout-button" do %>
+      <i class="fa fa-fw fa-refresh"></i> <span class="label">Refresh Layout</span>
+    <% end %>
+  </li>
+<% end %>
