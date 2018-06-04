@@ -23,7 +23,7 @@ class FetchFaviconWorker
       contents = StringIO.new(res.body)
       app_monitor.favicon.attach(io: contents, filename: "favicon-#{app_monitor.url.gsub(/\W/,'')}.ico")
     end
-  rescue Net::HTTP::Persistent::Error
+  rescue Net::HTTP::Persistent::Error, Net::HTTPNotFound
     return
   end
 
