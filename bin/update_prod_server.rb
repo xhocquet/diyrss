@@ -11,6 +11,8 @@ puts "Clearing production assets"
 
 puts "Updating gems"
 `#{ENV_VARS} bundle install`
+puts "Updating modules"
+`#{ENV_VARS} npm install`
 puts "Updating node modules and compiling assets"
 `#{ENV_VARS} bundle exec rails assets:precompile`
 puts "Migrating database"
