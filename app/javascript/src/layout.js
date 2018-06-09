@@ -83,4 +83,9 @@ export default function setupContainerAndSaving(argument) {
     localStorage.removeItem('diyrss-dashboard-positions')
     $grid = initGrid()
   })
+
+  $grid.on('layoutComplete', function( event, laidOutItems ) {
+    var positions = $grid.packery( 'getShiftPositions', 'data-item-id' )
+    localStorage.setItem( 'diyrss-dashboard-positions', JSON.stringify( positions ) )
+  })
 }

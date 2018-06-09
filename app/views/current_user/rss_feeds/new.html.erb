@@ -1,0 +1,25 @@
+<div class="card bg-light mx-auto mt-5 rss-feeds-card">
+  <div class="card-body">
+    <h5 class="card-title pull-left">New Feed</h5>
+    <hr>
+
+    <%= form_for @rss_feed, url: current_user_rss_feeds_path, class: 'new-rss-feed-form' do |f| %>
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, required: true, class: 'form-control' %>
+      </div>
+      <%= f.label "Pre-populate some of your categories:" %>
+      <div class="form-group category-selector">
+        <%= current_user.user_categories.find_each do |category| %>
+          <div class="prepopulate-category-button" data-category-id="<%= category.id %>">
+            <%= category.name %> <i class="fa fa-check"></i>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit 'Save', class: 'btn btn-success btn-block' %>
+      </div>
+    <% end %>
+  </div>
+</div>

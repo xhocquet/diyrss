@@ -2,7 +2,7 @@
   <li class="nav-item dropdown">
     <% if @notifications.present? %>
       <a class="nav-link dropdown" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fa fa-fw fa-envelope-open" data-toggle="tooltip" data-placement="bottom" title="Notifications"></i>
+          <i class="fa fa-fw fa-envelope-open" data-toggle="tooltip" data-placement="bottom" title="Notifications"></i>  <span class="label">Notifications</span>
           <% if @notifications.present? %>
             <span class="d-lg-none">Alerts
               <span class="badge badge-pill badge-warning"><%= @notifications.size %> New</span>

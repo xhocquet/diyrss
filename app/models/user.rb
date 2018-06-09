@@ -11,16 +11,16 @@ class User < ApplicationRecord
 
   has_one :user_profile
 
-  after_create :create_loan_profile
+  after_create :create_user_profile
 
   enum role: {
     user: 0,
     admin: 1,
   }
 
-  def create_loan_profile
-    return if loan_profile.present?
+  def create_user_profile
+    return if user_profile.present?
 
-    LoanProfile.create! user: self
+    UserProfile.create! user: self
   end
 end

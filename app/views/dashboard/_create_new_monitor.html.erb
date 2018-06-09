@@ -1,11 +1,11 @@
 <div class="new-link-monitor-container">
   <%= form_for [category, UserMonitor.new], html: { class: 'form-group' } do  |f| %>
     <div class="form-group">
-      <%= f.text_field :name, placeholder: "Name", class: 'form-control form-control-sm' %>
+      <%= f.text_field :name, required: true, placeholder: "Name", class: 'form-control form-control-sm' %>
     </div>
     <div class="form-group">
-      <%= f.text_field :url, placeholder: "URL", class: 'form-control form-control-sm' %>
+      <%= f.text_field :url, required: true, pattern: ".+\\..+", placeholder: "URL", class: 'form-control form-control-sm' %>
     </div>
-    <%= f.submit "Create Link", class: 'btn btn-sm btn-info form-control form-control-sm' %>
+    <%= f.submit "Create Link", class: 'btn btn-sm btn-info form-control form-control-sm new-monitor-submit-button' %>
   <% end %>
 </div>

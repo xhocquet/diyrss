@@ -1,11 +1,11 @@
 class RssFeedsController < BaseController
-  # TODO Toggle auth based on settings
   skip_before_action :authenticate_user!
 
   def show
     @rss_feed = current_user.rss_feeds.find(params.require(:id))
 
     respond_to do |format|
+      format.xml { render :layout => false }
       format.rss { render :layout => false }
     end
   end

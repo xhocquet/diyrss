@@ -1,29 +1,33 @@
 <div class="card bg-light mx-auto mt-5 rss-feeds-card">
   <div class="card-body">
-    <h5 class="card-title">My Feeds:</h5>
+    <div class="rss-feed-header">
+      <h5 class="card-title pull-left">My Feeds:</h5>
+      <%= link_to new_current_user_rss_feed_path, class: 'btn btn-sm btn-success pull-right' do %>
+        <i class="fa fa-plus" data-toggle="tooltip" data-placement="bottom" title="Create New Feed"></i>
+      <% end %>
+    </div>
+
+    <hr />
+
+    <% if @rss_feeds.present? %>
       <% @rss_feeds.each do |feed| %>
         <div class="rss-row">
           <div class="cell feed-name"><%= feed.name %></div>
+
           <div class="cell feed-url">
             <div class="input-group">
-              <input type="text" class="form-control" disabled value="<%= feed.url || 'N/A' %>" aria-label="<%= feed.url || 'N/A' %>" aria-describedby="basic-addon2">
+              <input type="text" class="form-control" readonly value="<%= feed.url || 'N/A' %>" aria-label="<%= feed.url || 'N/A' %>">
               <div class="input-group-append">
-                <button class="btn btn-dark" type="button">
-                  <i class="fa fa-clipboard" data-toggle="tooltip" data-placement="bottom" title="Copy"></i>
+                <button class="btn btn-dark btn-sm" type="button">
+                  <i class="fa fa-clipboard copy-feed-url-button"></i>
                 </button>
               </div>
             </div>
           </div>
-
-          <div class="btn-group feed-button" role="group"">
-            <button type="button" class="btn btn-warning">
-              <i class="fa fa-pencil" data-toggle="tooltip" data-placement="bottom" title="Edit"></i>
-            </button>
-            <%= link_to user_rss_feed_path(current_user, feed, format: :rss), class: 'btn btn-success', target: '_blank' do %>
-              <i class="fa fa-clipboard" data-toggle="tooltip" data-placement="bottom" title="Open"></i>
-            <% end %>
-          </div>
         </div>
       <% end %>
+    <% else %>
+      <%= render 'empty_states/rss_feeds' %>
+    <% end %>
   </div>
 </div>

@@ -5,15 +5,13 @@ import "bootstrap"
 
 import jQueryBridget from 'jquery-bridget'
 
+import Routes from 'javascripts/utils/routes'
 import setupLayout from 'src/layout'
 
 // STYLES
 import '../stylesheets/application'
 
-import Routes from 'javascripts/utils/routes'
-
 document.addEventListener('DOMContentLoaded', () => {
-
   setupLayout()
 
   // Prevent the content wrapper from scrolling when the fixed side navigation hovered over
@@ -84,6 +82,33 @@ document.addEventListener('DOMContentLoaded', () => {
       .done(function( data ) {
         location.reload()
       })
+  })
+
+  $('.prepopulate-category-button').click(function(e) {
+    $(e.currentTarget).toggleClass('selected')
+  })
+
+  $('#new_rss_feed').submit(function(event){
+    var selectedIds = $('.prepopulate-category-button.selected').map(function(index, element) {
+      return $(element).data('category-id')
+    }).toArray()
+
+    $('<input />').attr('type', 'hidden')
+      .attr('name', "rss_feed[initial_categories]")
+      .attr('value', selectedIds.toString())
+      .appendTo('#new_rss_feed');
+
+    return true
+  });
+
+  $('.copy-feed-url-button').click(function(e) {
+    $(e.currentTarget).parents('.input-group').find('input')[0].select()
+    document.execCommand("copy");
+    $(e.currentTarget).tooltip({
+      title: "Copied to clipboard!",
+      placement: "bottom"
+    })
+    $(e.currentTarget).tooltip('show')
   })
 })
 

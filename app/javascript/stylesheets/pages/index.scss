@@ -33,6 +33,11 @@
     .category-header {
       display: flex;
       justify-content: space-between;
+
+      .btn {
+        height: 30px;
+        align-self: center;
+      }
     }
 
     hr {
