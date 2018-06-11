@@ -6,7 +6,7 @@ puts "Stopping Sidekiq and Puma..."
 puts "Sidekiq and Puma stopped"
 
 puts "Clearing production assets"
-`rm -rf public/assets/`
+`rails assets:clobber`
 `git pull`
 
 puts "Updating gems"

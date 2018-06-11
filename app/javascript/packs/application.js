@@ -101,6 +101,11 @@ document.addEventListener('DOMContentLoaded', () => {
     return true
   });
 
+  $('.name-container').click(function(e) {
+    $(e.currentTarget).find('i.text-success').removeClass('text-success').addClass('text-secondary');
+    return true
+  })
+
   $('.copy-feed-url-button').click(function(e) {
     $(e.currentTarget).parents('.input-group').find('input')[0].select()
     document.execCommand("copy");
