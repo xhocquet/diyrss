@@ -12,7 +12,7 @@
     <% if @rss_feeds.present? %>
       <% @rss_feeds.each do |feed| %>
         <div class="rss-row">
-          <div class="cell feed-name"><%= feed.name %></div>
+          <div class="cell feed-name"><%= link_to feed.name, current_user_rss_feed_path(feed) %></div>
 
           <div class="cell feed-url">
             <div class="input-group">
