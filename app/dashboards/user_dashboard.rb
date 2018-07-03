@@ -33,8 +33,6 @@ class UserDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :email,
-    :user_categories,
-    :user_monitors,
     :last_sign_in_at,
   ].freeze
 

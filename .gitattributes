@@ -1,2 +1,3 @@
 *secrets.yml filter=git-crypt diff=git-crypt
 *gcs.json filter=git-crypt diff=git-crypt
+*dump_restore_db.rb filter=git-crypt diff=git-crypt

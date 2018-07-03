@@ -13,6 +13,8 @@ Rails.application.configure do
 
   config.active_job.queue_adapter = :sidekiq
 
+  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+
   # Show full error reports.
   config.consider_all_requests_local = true
 

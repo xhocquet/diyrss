@@ -26,4 +26,8 @@ module ApplicationHelper
       image_path("rss.svg")
     end
   end
+
+  def public_dashboard_url(profile)
+    "<a href='#{request.host}:#{request.port}/u/#{profile.dashboard_slug}'>#{request.host}:#{request.port}/u/#{profile.dashboard_slug}</a>"
+  end
 end

@@ -18,7 +18,7 @@ module CurrentUser
     end
 
     def profile_params
-      params.require(:user_profile).permit(:notify_email, :notify_site)
+      params.require(:user_profile).permit(:notify_email, :notify_site, :dashboard_slug)
     end
   end
 end

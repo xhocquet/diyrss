@@ -12,6 +12,14 @@
         <%= f.label 'Notify me via in-site notifications', class: 'form-check-label' %>
       </div>
       <hr>
+      <div class="form-group">
+        <%= f.label 'Slug to my public dashboard:' %>
+        <div class="input-group">
+          <input type="text" class="form-control" value="<%= @profile.dashboard_slug %>" name="user_profile[dashboard_slug]" id="user_profile_dashboard_slug">
+        </div>
+        <small id="emailHelp" class="form-text text-muted">Your dashboard can be found at <%= raw public_dashboard_url(@profile) %>.</small>
+      </div>
+      <hr>
       <div class="form-group row">
         <div class="col-md-7"></div>
         <div class="col-md-4">

@@ -24,6 +24,10 @@ Rails.application.routes.draw do
     get 'selector_suggestions/success'
   end
 
+  namespace :u do
+    get ':slug', controller: :public_dashboards, action: :show
+  end
+
   namespace :admin do
     resources :users
     resources :app_monitors
