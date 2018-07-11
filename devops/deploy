@@ -1,0 +1,11 @@
+---
+- hosts: production
+  remote_user: root
+
+  tasks:
+  - name: Update production server
+    command: /usr/share/rvm/rubies/ruby-2.4.1/bin/ruby bin/update_prod_server.rb
+    args:
+      chdir: /root/diyrss/
+
+
