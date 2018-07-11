@@ -3,7 +3,7 @@ ENV_VARS = "RAILS_ENV=production RACK_ENV=production RAILS_SERVE_STATIC_FILES=tr
 `ps -ef | grep sidekiq | grep -v grep | awk '{print $2}' | xargs kill -9`
 `ps -ef | grep puma | grep -v grep | awk '{print $2}' | xargs kill -9`
 
-`rails assets:clobber`
+`bundle exec rails assets:clobber`
 `git pull`
 
 `#{ENV_VARS} bundle install`
