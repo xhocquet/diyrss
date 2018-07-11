@@ -19,6 +19,11 @@ class AppMonitor < ApplicationRecord
     monitor_results.where(new_content: true).last
   end
 
+  def suspicious_results?
+    last_results = monitor_results.last(10).map(&:new_content)
+    last_results.count(true) > 8
+  end
+
   private
     def trigger_initial_jobs
       FetchFaviconWorker.perform_async(id)

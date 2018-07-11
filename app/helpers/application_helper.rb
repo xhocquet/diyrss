@@ -1,10 +1,7 @@
 module ApplicationHelper
   def monitor_status_color_class(result)
-    if result.present?
-      'text-success'
-    else
-      'text-secondary'
-    end
+    return 'text-success' if result.present?
+    'text-secondary'
   end
 
   def notification_description(thing)
@@ -29,5 +26,19 @@ module ApplicationHelper
 
   def public_dashboard_url(profile)
     "<a href='#{request.host}:#{request.port}/u/#{profile.dashboard_slug}'>#{request.host}:#{request.port}/u/#{profile.dashboard_slug}</a>"
+  end
+
+  def configure_app_monitor_class(app_monitor)
+    return "text-danger" if app_monitor.suspicious_results?
+    "text-secondary"
+  end
+
+  def configure_app_monitor_link(app_monitor)
+    latest_result = app_monitor.latest_result
+    if latest_result.present?
+      admin_monitor_result_diff_path(latest_result.id)
+    else
+      admin_app_monitor_path(app_monitor)
+    end
   end
 end

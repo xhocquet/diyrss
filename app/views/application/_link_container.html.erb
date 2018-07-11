@@ -7,6 +7,11 @@
         <span class="text-info monitor-name"><%= monitor.name %></span>
       </a>
       <div>
+        <% if current_user.admin? %>
+          <%= link_to configure_app_monitor_link(monitor.app_monitor), target: '_blank' do %>
+            <i class="fa fa-cog <%= configure_app_monitor_class(monitor.app_monitor) %> configure-monitor-button" data-toggle="tooltip" data-placement="bottom" title="Configure"></i>
+          <% end %>
+        <% end %>
         <i class="fa fa-refresh text-warning refresh-user-monitor-button" data-monitor-id="<%= monitor.id %>" data-toggle="tooltip" data-placement="bottom" title="Refresh"></i>
         <i class="fa fa-pencil text-primary toggle-link-form-button" data-toggle="tooltip" data-placement="bottom" title="Edit"></i>
       </div>
