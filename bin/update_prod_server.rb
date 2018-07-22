@@ -1,4 +1,4 @@
-ENV_VARS = "RAILS_ENV=production RACK_ENV=production RAILS_SERVE_STATIC_FILES=true"
+ENV_VARS = "RAILS_ENV=production RACK_ENV=production"
 BUNDLE = "/usr/share/rvm/gems/ruby-2.4.1/bin/bundle"
 
 `ps -ef | grep sidekiq | grep -v grep | awk '{print $2}' | xargs kill -9`
