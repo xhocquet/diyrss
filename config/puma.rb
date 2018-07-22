@@ -5,7 +5,7 @@ shared_dir = "#{app_dir}/shared"
 
 case rails_env
   when 'production'
-    port 80
+    # port 80
     daemonize true
   when 'development'
     port 3000
