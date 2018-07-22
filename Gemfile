@@ -30,7 +30,7 @@ gem 'loofah'
 gem 'sidekiq'
 
 # Admin
-gem 'administrate', git: 'https://github.com/thoughtbot/administrate.git', branch: 'master'
+gem 'administrate', git: 'https://github.com/thoughtbot/administrate.git', branch: 'master', ref: 'b85abcf965ecc843ee9b25e3a2ea65dfeb1b0b3c'
 
 # Nice diffs
 gem 'diffy'

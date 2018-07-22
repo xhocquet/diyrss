@@ -1,6 +1,7 @@
 GIT
   remote: https://github.com/thoughtbot/administrate.git
   revision: b85abcf965ecc843ee9b25e3a2ea65dfeb1b0b3c
+  ref: b85abcf965ecc843ee9b25e3a2ea65dfeb1b0b3c
   branch: master
   specs:
     administrate (0.10.0)
@@ -62,7 +63,7 @@ GEM
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     arel (9.0.0)
-    autoprefixer-rails (8.6.0)
+    autoprefixer-rails (9.0.0)
       execjs
     bcrypt (3.1.12)
     bindex (0.5.0)
@@ -166,7 +167,7 @@ GEM
     net-http-persistent (3.0.0)
       connection_pool (~> 2.2)
     nio4r (2.3.1)
-    nokogiri (1.8.2)
+    nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
     ntlm-http (0.1.1)
     orm_adapter (0.5.0)
@@ -179,9 +180,9 @@ GEM
       actionmailer (>= 3, < 6)
       premailer (~> 1.7, >= 1.7.9)
     public_suffix (3.0.2)
-    puma (3.11.4)
+    puma (3.12.0)
     rack (2.0.5)
-    rack-protection (2.0.1)
+    rack-protection (2.0.3)
       rack
     rack-proxy (0.6.4)
       rack
@@ -215,17 +216,17 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
-    recaptcha (4.8.0)
+    recaptcha (4.10.0)
       json
     redis (4.0.1)
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
-    rollbar (2.16.0)
+    rollbar (2.16.3)
       multi_json
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
-    sass (3.5.6)
+    sass (3.5.7)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -236,8 +237,8 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    selectize-rails (0.12.4.1)
-    selenium-webdriver (3.12.0)
+    selectize-rails (0.12.5)
+    selenium-webdriver (3.13.1)
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
     sidekiq (5.1.3)
@@ -250,7 +251,7 @@ GEM
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
       spring (>= 1.2, < 3.0)
-    sprockets (3.7.1)
+    sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (3.2.1)
@@ -265,7 +266,7 @@ GEM
     turbolinks-source (5.1.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (4.1.11)
+    uglifier (4.1.15)
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
@@ -278,7 +279,7 @@ GEM
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
-    webpacker (3.5.3)
+    webpacker (3.5.5)
       activesupport (>= 4.2)
       rack-proxy (>= 0.6.1)
       railties (>= 4.2)
@@ -326,4 +327,4 @@ DEPENDENCIES
   whenever
 
 BUNDLED WITH
-   1.16.0
+   1.16.2
