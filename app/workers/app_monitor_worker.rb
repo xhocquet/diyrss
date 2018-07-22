@@ -11,7 +11,10 @@ class AppMonitorWorker
 
   def perform(app_monitor_id)
     @app_monitor_id = app_monitor_id
-    @app_monitor = AppMonitor.find(app_monitor_id)
+
+    @app_monitor = AppMonitor.find_by(id: app_monitor_id)
+    return if @app_monitor.blank?
+
     @last_latest_result = app_monitor.latest_result
 
     # Queue a job for later if we already have an update
@@ -38,7 +41,7 @@ class AppMonitorWorker
 
     NewMonitorResultWorker.perform_async(app_monitor.id)
 
-    AppMonitorWorker.perform_in(10.minutes, app_monitor_id)
+    queue_next_app_monitor_worker
 
   rescue StandardError => e
     if e.message =~ /absolute URL needed/
@@ -46,6 +49,10 @@ class AppMonitorWorker
     else
       raise e
     end
+  rescue Errno::EMFILE
+    queue_next_app_monitor_worker
+  rescue OpenSSL::SSL::SSLError
+    queue_next_app_monitor_worker
   end
 
   def fetch_and_clean_payload
@@ -63,6 +70,10 @@ class AppMonitorWorker
 
     fragment = Loofah.fragment(body.to_s).scrub!(:whitewash)
     fragment.to_s.gsub(/\s/,"")
+  end
+
+  def queue_next_app_monitor_worker
+    AppMonitorWorker.perform_in(10.minutes, app_monitor_id)
   end
 
   def check_for_new_content
