@@ -17,6 +17,8 @@
 storage/
 !/log/.keep
 !/tmp/.keep
+/shared/log/*
+/shared/pids/*
 
 /node_modules
 /yarn-error.log
