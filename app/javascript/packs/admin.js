@@ -5,4 +5,4 @@ import "jquery-ujs"
 import "bootstrap"
 
 // STYLES
-import '../stylesheets/admin'
+import './stylesheets/admin'
