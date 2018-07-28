@@ -11,6 +11,13 @@ environment.plugins.prepend('Provide', new webpack.ProvidePlugin({
   })
 )
 
+environment.loaders.get('sass').use.splice(-1, 0, {
+  loader: 'resolve-url-loader',
+  options: {
+    attempts: 1
+  }
+})
+
 const envConfig = module.exports = environment
 const aliasConfig = module.exports = {
   resolve: {
