@@ -7,20 +7,16 @@ case rails_env
   when 'production'
     # port 80
     daemonize true
-  when 'development'
-    port 3000
+
+    # Number of cores
+    workers 2
+
+    # Min, max threads
+    threads 1,6
   else
 end
 
-# Number of cores
-workers 2
-
-# Min, max threads
-threads 1,6
-
-bind "unix://#{shared_dir}/sockets/puma.sock"
-
-# preload_app!
+port 3000
 
 # Logging
 stdout_redirect "#{shared_dir}/log/puma.stdout.log", "#{shared_dir}/log/puma.stderr.log", true
