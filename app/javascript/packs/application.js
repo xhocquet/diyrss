@@ -9,7 +9,7 @@ import Routes from 'javascripts/utils/routes'
 import setupLayout from 'src/layout'
 
 // STYLES
-import '../stylesheets/application'
+require('../stylesheets/application.scss')
 
 document.addEventListener('DOMContentLoaded', () => {
   setupLayout()
