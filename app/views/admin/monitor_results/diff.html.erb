@@ -4,6 +4,9 @@
   <h1 class="main-content__page-title">
     <%= content_for(:title) %>
   </h1>
+  <div>
+    <a class="button" href="<%= admin_user_monitor_path(@resource.app_monitor) %>">App Monitor</a>
+  </div>
 </header>
 
 <section class="main-content__body">

@@ -8,7 +8,8 @@ module Admin
     end
 
     def diff
-      @diff = scoped_resource.find(params.require(:monitor_result_id)).difference_from_last_in_html
+      @resource = scoped_resource.find(params.require(:monitor_result_id))
+      @diff = @resource.difference_from_last_in_html
     end
 
     # Define a custom finder by overriding the `find_resource` method:
