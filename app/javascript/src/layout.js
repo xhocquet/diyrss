@@ -53,13 +53,13 @@ function initGrid() {
     gutter: 10,
     columnWidth: colWidth,
     percentPosition: true,
-    initLayout: false // disable initial layout
+    initLayout: true // disable initial layout
   })
 
   // get saved dragged positions
-  var initPositions = localStorage.getItem('diyrss-dashboard-positions')
+  // var initPositions = localStorage.getItem('diyrss-dashboard-positions')
   // init layout with saved positions
-  $grid.packery( 'initShiftLayout', initPositions, 'data-item-id' )
+  // $grid.packery( 'initShiftLayout', initPositions, 'data-item-id' )
 
   $grid.find('.category-container').each( function( i, gridItem ) {
     var draggie = new Draggabilly( gridItem )
@@ -84,8 +84,8 @@ export default function setupContainerAndSaving(argument) {
     $grid = initGrid()
   })
 
-  $grid.on('layoutComplete', function( event, laidOutItems ) {
-    var positions = $grid.packery( 'getShiftPositions', 'data-item-id' )
-    localStorage.setItem( 'diyrss-dashboard-positions', JSON.stringify( positions ) )
-  })
+  // $grid.on('layoutComplete', function( event, laidOutItems ) {
+  //   var positions = $grid.packery( 'getShiftPositions', 'data-item-id' )
+  //   localStorage.setItem( 'diyrss-dashboard-positions', JSON.stringify( positions ) )
+  // })
 }
