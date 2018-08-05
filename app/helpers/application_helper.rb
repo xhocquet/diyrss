@@ -3,13 +3,6 @@ module ApplicationHelper
     return 'text-success' if result.present?
     'text-secondary'
   end
-
-  def notification_description(thing)
-    if thing.is_a? UserMonitor
-      "Go to #{thing.name}!"
-    end
-  end
-
   def notification_redirect_path(notif)
     if notif.relevant_thing.is_a? UserMonitor
       redirect_path(notif.relevant_thing.id)

@@ -13,8 +13,12 @@ class RssFeed < ApplicationRecord
     user.notifications.where(relevant_thing_id: user_monitors.ids)
   end
 
-  def url
+  def xml_url
     Rails.application.routes.url_helpers.user_rss_feed_url(user, self, format: :xml)
+  end
+
+  def rss_url
+    Rails.application.routes.url_helpers.user_rss_feed_url(user, self, format: :rss)
   end
 
   private

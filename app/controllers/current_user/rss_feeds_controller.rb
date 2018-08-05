@@ -21,6 +21,18 @@ module CurrentUser
       @rss_feed = current_user.rss_feeds.find(params.require(:id))
     end
 
+    def update
+      @rss_feed = current_user.rss_feeds.find(params.require(:id))
+
+      if @rss_feed.update rss_feed_params
+        flash[:notice] = "Successfully updated rss feed."
+      else
+        flash[:alert] = "Could not update rss feed. Try again."
+      end
+
+      redirect_to current_user_rss_feed_path(@rss_feed)
+    end
+
     def rss_feed_params
       params.require(:rss_feed).permit(:name, :initial_categories)
     end

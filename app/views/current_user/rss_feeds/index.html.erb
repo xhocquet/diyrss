@@ -13,17 +13,6 @@
       <% @rss_feeds.each do |feed| %>
         <div class="rss-row">
           <div class="cell feed-name"><%= link_to feed.name, current_user_rss_feed_path(feed) %></div>
-
-          <div class="cell feed-url">
-            <div class="input-group">
-              <input type="text" class="form-control" readonly value="<%= feed.url || 'N/A' %>" aria-label="<%= feed.url || 'N/A' %>">
-              <div class="input-group-append">
-                <button class="btn btn-dark btn-sm" type="button">
-                  <i class="fa fa-clipboard copy-feed-url-button"></i>
-                </button>
-              </div>
-            </div>
-          </div>
         </div>
       <% end %>
     <% else %>

@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     root '', action: :index
   end
 
+  namespace :resources do
+    root '', action: :index
+  end
+
   devise_for :users
 
   resources :users, only: [] do

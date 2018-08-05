@@ -25,17 +25,9 @@ body.current_user_rss_feeds.index, body.current_user_rss_feeds.new, body.current
         height: 46px;
         line-height: 38px;
 
-        &:hover {
-          background-color: #e4e4e4;
-        }
-
         .cell {
           padding: 4px;
           line-height: inherit;
-        }
-
-        .feed-name, .feed-url {
-          flex: 1;
         }
       }
 
