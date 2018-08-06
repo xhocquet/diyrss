@@ -21,7 +21,6 @@
                 <i class="fa fa-newspaper-o"></i> Fresh Content!</strong>
             </span>
             <span class="small float-right text-muted"><%= distance_of_time_in_words(notif.created_at, Time.now.utc) %></span>
-            <div class="dropdown-message small"><%= notification_description(notif.relevant_thing) %></div>
           </a>
           <div class="dropdown-divider"></div>
         <% end %>
