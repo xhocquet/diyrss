@@ -18,7 +18,7 @@ module ApplicationHelper
   end
 
   def public_dashboard_url(profile)
-    "<a href='#{request.host}:#{request.port}/u/#{profile.dashboard_slug}'>#{request.host}:#{request.port}/u/#{profile.dashboard_slug}</a>"
+    "<a href='#{request.host}/u/#{profile.dashboard_slug}'>#{request.host}/u/#{profile.dashboard_slug}</a>"
   end
 
   def configure_app_monitor_class(app_monitor)

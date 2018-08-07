@@ -36,6 +36,19 @@ document.addEventListener('DOMContentLoaded', () => {
     $(e.target).parents('.link-container').find('.link-form').toggleClass('toggled')
   })
 
+  $('.delete-monitor-link').click(function(e) {
+    if (!confirm("Are you sure?")) {
+      e.preventDefault()
+      e.stopPropagation()
+    }
+  })
+
+  $('.delete-category-link').click(function(e) {
+    if (!confirm("Are you sure?")) {
+      e.preventDefault()
+      e.stopPropagation()
+    }
+  })
 
   // Refresh trigger
   $('.refresh-user-monitor-button').click(function(e) {

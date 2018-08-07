@@ -1,7 +1,7 @@
 <div class="category-container" data-item-id="<%= category.id %>">
   <div class="fa category-header">
     <h3><%= category.name %></h3>
-    <%= link_to user_category_path(category), method: :delete, class: 'btn btn-sm btn-danger' do %>
+    <%= link_to user_category_path(category), method: :delete, class: 'btn btn-sm btn-danger delete-category-link' do %>
       <i class="fa fa-trash" data-toggle="tooltip" data-placement="bottom" title="Delete category and links"></i>
     <% end %>
   </div>

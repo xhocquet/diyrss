@@ -24,6 +24,7 @@ body.current_user_rss_feeds.index, body.current_user_rss_feeds.new, body.current
         display: flex;
         height: 46px;
         line-height: 38px;
+        border-bottom: 1px solid black;
 
         .cell {
           padding: 4px;

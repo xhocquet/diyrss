@@ -2,7 +2,13 @@
 
   <%= image_tag("rss.svg", class: "navbar-logo", width: "32px", alt: "logo") %>
 
-  <%= link_to "DIY RSS", root_path, class: "navbar-brand" %>
+  <%= link_to root_path, class: "navbar-brand" do %>
+    <% if content_for? :header %>
+      <% yield :header %>
+    <% else %>
+      DIY RSS
+    <% end %>
+  <% end %>
 
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>

@@ -1,0 +1,15 @@
+<div class="category-container" data-item-id="<%= category.id %>">
+  <div class="fa category-header">
+    <h3><%= category.name %></h3>
+  </div>
+  <hr>
+  <div class="links-container">
+    <% if category.user_monitors.empty? %>
+      <%= render 'empty_states/user_monitors' %>
+    <% else %>
+      <% category.user_monitors.each do |monitor| %>
+        <%= render 'public/link_container', monitor: monitor %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

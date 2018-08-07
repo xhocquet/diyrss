@@ -1,3 +1,5 @@
+<% content_for :header, "DIY RSS - #{@user_profile.user.email}" %>
+
 <div class="categories-container">
   <% if @user_categories.nil? %>
     <div class="empty-state">
@@ -6,19 +8,7 @@
     </div>
   <% else %>
     <% @user_categories.each do |category| %>
-      <%= render 'application/category_card', category: category %>
+      <%= render 'public/category_card', category: category %>
     <% end %>
   <% end %>
-
-
-  <div class="category-container new-category-container" data-item-id="999999">
-    <h3 class="category-header">Add a new Category</h3>
-    <hr>
-    <%= form_for UserCategory.new(user: current_user) do  |f| %>
-        <div class="form-group">
-          <%= f.text_field :name, class: 'form-control form-control-sm', placeholder: 'Name' %>
-        </div>
-        <%= f.submit 'Create Category', class: 'btn btn-sm btn-success form-control' %>
-    <% end %>
-  </div>
 </div>
