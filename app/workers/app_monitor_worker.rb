@@ -63,7 +63,7 @@ class AppMonitorWorker
 
     if app_monitor.selector.present?
       nodes = response.search(app_monitor.selector)
-      body = nodes.to_s
+      body = nodes.map(&:text).sort.join
     else
       body = response.search(:body)
     end
