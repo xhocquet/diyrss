@@ -27,9 +27,9 @@ module ApplicationHelper
   end
 
   def configure_app_monitor_link(app_monitor)
-    latest_result = app_monitor.latest_result
-    if latest_result.present?
-      admin_monitor_result_diff_path(latest_result.id)
+    last_new_result = app_monitor.monitor_results.order(:created_at).where(new_content: true).last
+    if last_new_result.present?
+      admin_monitor_result_diff_path(last_new_result.id)
     else
       admin_app_monitor_path(app_monitor)
     end
