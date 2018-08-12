@@ -63,13 +63,13 @@ class AppMonitorWorker
 
     if app_monitor.selector.present?
       nodes = response.search(app_monitor.selector)
-      body = nodes.map(&:text).sort.join
+      body = nodes.to_s
     else
       body = response.search(:body)
     end
 
     fragment = Loofah.fragment(body.to_s).scrub!(:whitewash)
-    fragment.to_s.gsub(/\s/,"")
+    fragment.text.split("\n").select(&:present?).map{|x| x.strip.downcase}.sort.join.gsub(/[^0-9a-z]/i, '')
   end
 
   def queue_next_app_monitor_worker
